@@ -1,0 +1,33 @@
+\PropositionE{1}
+{The world is everything that is the case.\footnote{The decimal figures as numbers of the separate propositions indicate the logical
+importance of the propositions, the emphasis laid upon them in my exposition.
+The propositions \textit{n}.1, \textit{n}.2, \textit{n}.3, etc., are comments on proposition No.\;\textit{n}; the propositions
+\textit{n}.\textit{m}1, \textit{n}.\textit{m}2, etc., are comments on the proposition No.\;\textit{n}.\textit{m}; and so on.}}
+
+
+\PropositionE{1.1}
+{The world is the totality of facts, not of
+things.}
+
+
+\PropositionE{1.11}
+{The world is determined by the facts, and by
+these being \emph{all} the facts.}
+
+
+\PropositionE{1.12}
+{For the totality of facts determines both what is
+the case, and also all that is not the case.}
+
+
+\PropositionE{1.13}
+{The facts in logical space are the world.}
+
+
+\PropositionE{1.2}
+{The world divides into facts.}
+
+
+\PropositionE{1.21}
+{Any one can either be the case or not be the
+case, and everything else remain the same.}
