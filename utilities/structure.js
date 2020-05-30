@@ -1,5 +1,4 @@
-// This structures the propositions into a graph.
-// The goal is to structure them into children arrays for efficient searching
+// This structures the propositions into a graph for efficient searching
 // Happily, the number of children never goes beyond 10
 // So we can just find the place in their parent's childrens array by their decimal:
 // E.g. 2131 should be the first child of 213
@@ -24,24 +23,24 @@ const structurePropositions = (propositions) => {
 }
 
 const processProposition = (proposition) => {
-    let parentNode = TLP 
     // we start at the top level, the TLP node
+    let parentNode = TLP
     // we now step through each digit of the proposition number, left to right
     // stepping through children nodes and creating them along the way if necessary
-    const number = proposition.number
-    for (level = 0; level < number.length; level++) {
-        // get the number up to this level; (eg number 2132 at level 1 yields 21)
-        numberSoFar = number.slice(0, level + 1);
-
+    let numberSoFar = ''
+    proposition.number.split('').forEach((digit) => {
+        numberSoFar += digit
         // then we find the node for this number, creating it if it doesn't exist
-        const node = nodeForNumber(parentNode, numberSoFar, proposition)
-
+        const node = nodeForNumber(parentNode, numberSoFar)
+         // if this is the proposition's final node, assign the proposition
+         if (numberSoFar === proposition.number) node.proposition = proposition
         // and step into that node for the next iteration
         parentNode = node
-    }
+    })
 }
 
-const nodeForNumber = (parentNode, number, proposition) => {
+
+const nodeForNumber = (parentNode, number) => {
     // the current digit is the last character of the node's number
     // this represents the place in its parents children array; (eg, 213 is third comment on 21)
     const digit = number.slice(-1)
@@ -50,7 +49,7 @@ const nodeForNumber = (parentNode, number, proposition) => {
         return node = parentNode.children[digit]
     } else {
         // otherwise we create it
-        const node = createNode(number, proposition) 
+        const node = createNode(number)
         // and add it at the right place
         parentNode.children[digit] = node
         // and return it
@@ -58,23 +57,10 @@ const nodeForNumber = (parentNode, number, proposition) => {
     }
 }
 
-// NOTE: this expects only propositions to be set on node's that don't already exist
-// (It works out, but only because the order is right; 
-//  otherwise we'd need to prevent overwriting children arrays)
-const createNode = (number, proposition) => {
-    if (number === proposition.number) {
-        // this is the proposition's final node
-        return {
-            number,
-            proposition,
-            children: []
-            // TODO: not all propositions need children
-        }
-    } else {
-        return {
-            number,
-            children: []
-        }
+const createNode = (number) => {
+    return {
+        number,
+        children: []
     }
 }
 
