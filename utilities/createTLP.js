@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { getPropositions } = require('./parser')
+const { getPropositions } = require('./getPropositions')
 const { structurePropositions } = require('./structure')
 
 //const tlpPath = path.join(__dirname, './data/test.txt')

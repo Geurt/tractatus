@@ -34,7 +34,7 @@ const processProposition = (proposition) => {
         const node = nodeForNumber(parentNode, numberSoFar)
          // if this is the proposition's final node, assign the proposition
          if (numberSoFar === proposition.number) node.proposition = proposition
-        // and step into that node for the next iteration
+        // and step into the node for the next iteration
         parentNode = node
     })
 }

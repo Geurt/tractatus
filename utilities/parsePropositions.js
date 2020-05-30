@@ -57,10 +57,14 @@ class Proposition {
     }
 }
 
+function parsePropositions(rawPropositions) {
+    return rawPropositions.map(rawProposition => parseProposition(rawProposition))
+}
+
 function parseProposition(rawProposition) {
     return new Proposition(rawProposition)
 }
 
 module.exports = {
-    parseProposition
+    parsePropositions
 }

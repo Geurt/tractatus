@@ -1,6 +1,6 @@
 const fs = require('fs').promises
 const { propositionDelimiter } = require('./regexps')
-const { parseProposition } = require('./parseProposition') 
+const { parsePropositions } = require('./parsePropositions') 
 
 async function getRawPropositions(textFilePath) {
     const data = await fs.readFile(textFilePath);
@@ -10,10 +10,6 @@ async function getRawPropositions(textFilePath) {
     rawPropositions.shift();
 
     return rawPropositions;
-}
-
-function parsePropositions(rawPropositions) {
-    return rawPropositions.map(rawProposition => parseProposition(rawProposition))
 }
 
 async function getPropositions(tlpPath) {
