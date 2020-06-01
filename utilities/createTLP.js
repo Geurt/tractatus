@@ -27,8 +27,22 @@ const writeTLP = () => {
 // create a TLP on the fly for development purposes
 const createTLP = async () => {
     const propositions = await getPropositions(tlpPath)
+    // only in development we need next and previous propositions, for easy testing
+    if (process.env.NODE_ENV === 'development') addPrevAndNext(propositions) // do this before structuring
     const TLP = structurePropositions(propositions)
     return TLP
+}
+
+// not used in production
+const addPrevAndNext = (propositions) => {
+    let previousProposition = undefined
+    propositions.forEach((proposition) => {
+        if (previousProposition) {
+            proposition.previous = previousProposition.number
+            previousProposition.next = proposition.number
+        }
+        previousProposition = proposition
+    })
 }
 
 module.exports = {
