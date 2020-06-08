@@ -1,0 +1,60 @@
+.proposition {
+    width: 500px;
+    margin:  100px auto;
+}
+
+.no_proposition {
+    width: 500px;
+    margin:  100px auto;
+}
+
+/* Proposition parsing */
+
+/* The original has textindented on every new line
+Unfortuately the text-indent each-line flag has no support yet
+I instert spans after breaks as a workaround*/
+.proposition__text {
+    text-indent: 30px;
+}
+.indenter {
+    display: inline-block;
+    width: 30px;
+}
+
+.texCommand_textit {
+    font-style: italic;
+}
+
+.texCommand_emph {
+    font-style: italic;
+}
+
+.texCommand_EmphPart {
+    font-style: italic;
+}
+
+.texCommand_enlargethispage {
+    display: none;
+}
+
+.texCommand_DPtypo {
+    display: none;
+}
+
+.texCommand_BookTitle {
+    font-style: italic;
+}
+
+.proposition__image {
+    display: block;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.proposition__image--cube {
+    width: 50%;
+}
+
+.proposition__image--brackets03-en, .proposition__image--brackets03-de {
+    width: 25%;
+}

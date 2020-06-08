@@ -32,12 +32,12 @@ app.get('/api/:number', async (req, res) => {
 
     if (proposition) {
         res.send(
-            '<link rel="stylesheet" type="text/css" href="../proposition.css">' +
+            '<link rel="stylesheet" type="text/css" href="../styles/proposition.css">' +
             `<div class="proposition">
-                <h1 class="proposition__number">${parsedNumber}</h1>
-                <p class="proposition__text">${proposition.text}</p>
                 <a href="/api/${proposition.previous}">previous</a>
                 <a href="/api/${proposition.next}">next</a>
+                <h1 class="proposition__number">${parsedNumber}</h1>
+                <p class="proposition__text">${proposition.text}</p>
             </div>`
             )
     } else {
