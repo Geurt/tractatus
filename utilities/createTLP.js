@@ -5,8 +5,8 @@ const { getPropositions } = require('./getPropositions')
 const { structurePropositions } = require('./structure')
 
 //const tlpPath = path.join(__dirname, './data/test.txt')
-const tlpPath = path.join(__dirname, '../data/tlp-german.tex')
-//const tlpPath = path.join(__dirname, '../data/tlp-english.tex')
+//const tlpPath = path.join(__dirname, '../data/tlp-german.tex')
+const tlpPath = path.join(__dirname, '../data/tlp-english.tex')
 
 // utility function to write a static JSON TLP
 const writeTLP = () => {
