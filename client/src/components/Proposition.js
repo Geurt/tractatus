@@ -1,10 +1,14 @@
 import React from 'react';
-import PropositionNode from './PropositionNode';
 
 const Proposition = ({ proposition }) => {
+    let number = proposition.number
+    if (number.length > 1) {
+        number = number[0] + '.' + number.slice(1,)
+    }
+
     return (
-        <div>
-            <p>{proposition.number}</p>
+        <div className="Proposition">
+            <p className="Proposition__number">{number}</p>
         </div>
     )
 }
