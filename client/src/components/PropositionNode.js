@@ -18,21 +18,18 @@ const PropositionNode = (props) => {
             style={{
                     "--rotation-angle": angle + "deg", 
                     "--compensating-angle": compensatingAngle + "deg"
-                }}
-        >
-            {proposition && 
-                <Proposition 
-                    proposition={proposition}
-                    />}
+                }}>
 
-            {children.length > 0 && <ul className="PropositionNode__children">
+            {proposition && <Proposition proposition={proposition} />}
+
+            {children.length > 0 && 
+                <ul className="PropositionNode__children">
                     {children.map((child) =>
                         <li key={child.number} className="PropositionNode__child">
                             <PropositionNode node={child}/>
                         </li>
                     )}
                 </ul>}
-                
         </div>
     )
 }
