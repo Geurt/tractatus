@@ -1,11 +1,13 @@
 // fetchPropositions
-export const fetchRootPropositionNode = () => {
+export const fetchRootPropositionNode = (rootNumber) => {
     // return a thunk
     return (dispatch) => {  // thunks are called with dispatch
-        fetch('/api/6')
+        fetch(`/api/${rootNumber}`)
             .then(handleErrors)
             .then(res => res.json())
-            .then(json => dispatch(setRootPropositionNode(json)))
+            .then(json => {
+                dispatch(setRootPropositionNode(json))
+            })
             .catch(error => console.log)
     }
 }

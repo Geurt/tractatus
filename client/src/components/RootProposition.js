@@ -5,10 +5,13 @@ import '../styles/main.css'
 import { fetchRootPropositionNode } from '../actions/propositions'
 import PropositionNode from '../components/PropositionNode'
 
-class App extends React.Component {
+class RootProposition extends React.Component {
     componentDidMount() {
+        const propositionNumber = this.props.match.params.number
+        const rootNumber = propositionNumber.charAt(0)
+
         // fetch and set root proposition here
-        this.props.dispatch(fetchRootPropositionNode())
+        this.props.dispatch(fetchRootPropositionNode(rootNumber))
     }
     render() {
         return (
@@ -25,4 +28,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(RootProposition)
