@@ -6,7 +6,8 @@ const propositionsReducerDefaultState = {
             text: ''
         },
         children: []
-    }
+    },
+    selectedPropositionNumber: ''
 }
 
 const propositionsReducer = (state = propositionsReducerDefaultState, action) => {
@@ -15,6 +16,11 @@ const propositionsReducer = (state = propositionsReducerDefaultState, action) =>
             return {
                 ...state,
                 rootPropositionNode: action.propositionNode
+            }
+        case 'SELECT_PROPOSITION':
+            return {
+                ...state,
+                selectedPropositionNumber: action.propositionNumber
             }
         default:
             return state

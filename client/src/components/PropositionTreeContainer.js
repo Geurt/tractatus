@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchRootPropositionNode } from '../actions/propositions'
+import { fetchRootPropositionNode, selectProposition } from '../actions/propositions'
 import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
 import { Navigation } from './Navigation'
@@ -20,6 +20,9 @@ class PropositionTreeContainer extends React.Component {
         this.props.dispatch(fetchRootPropositionNode(rootNumber))
 
         // set selectedPropositionNumber on state
+        if (propositionNumber.length > 1) {
+            this.props.dispatch(selectProposition(propositionNumber))
+        }
     }
 
     render() {

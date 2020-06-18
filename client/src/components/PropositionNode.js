@@ -1,37 +1,57 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import Proposition from './Proposition'
+import { selectProposition } from '../actions/propositions'
+import { isInSelectedAncestry } from '../selectors/propositions'
 
-const PropositionNode = (props) => {
-    const proposition = props.node.proposition
-    // There may be empty elements in the children (corresponding to the sometimes 
-    // unused zero indices in the Tractatus). We remove these in rendering.
-    const children = props.node.children.filter((child) => child !== null)
+// A difficulty here: we cannot use the CONNECTED component recursively in the same file
+// So we create a separate connected version, and use that for the child nodes below:
+import ConnectedPropositionNode from './ConnectedPropositionNode'
 
-    // In here we pass some layout params to the CSS through CSS-vars:
-    const angle = props.node.angle
-    const compensatingAngle = props.node.compensatingAngle
+class PropositionNode extends React.Component {
+    onSelectProposition = (e) => {
+        e.stopPropagation()
+        this.props.dispatch(selectProposition(this.props.node.number))
+    }
+    render() {
+        const proposition = this.props.node.proposition
+        // There may be empty elements in the children (corresponding to the sometimes 
+        // unused zero indices in the Tractatus). We remove these in rendering.
+        const children = this.props.node.children.filter((child) => child !== null)
 
-    // Finally, each node will recursively render its children:
-    return (
-        <div 
-            className="PropositionNode"
-            style={{
-                    "--rotation-angle": angle + "deg", 
-                    "--compensating-angle": compensatingAngle + "deg"
-                }}>
+        // In here we pass some layout params to the CSS through CSS-vars:
+        const angle = this.props.node.angle
+        const compensatingAngle = this.props.node.compensatingAngle
 
-            {proposition && <Proposition proposition={proposition} />}
+        // Finally, each node will recursively render its children:
+        return (
+            <div 
+                onMouseOver={this.onSelectProposition}
+                className= {this.props.isInSelectedAncestry ? "PropositionNode active" : "PropositionNode"}
+                style={{
+                        "--rotation-angle": angle + "deg", 
+                        "--compensating-angle": compensatingAngle + "deg"
+                    }}>
 
-            {children.length > 0 && 
-                <ul className="PropositionNode__children">
-                    {children.map((child) =>
-                        <li key={child.number} className="PropositionNode__child">
-                            <PropositionNode node={child}/>
-                        </li>
-                    )}
-                </ul>}
-        </div>
-    )
+                {proposition && <Proposition proposition={proposition} />}
+
+                {children.length > 0 && 
+                    <ul className="PropositionNode__children">
+                        {children.map((child) =>
+                            <li key={child.number} className="PropositionNode__child">
+                                <ConnectedPropositionNode node={child}/>
+                            </li>
+                        )}
+                    </ul>}
+            </div>
+        )
+    }
 }
 
-export default PropositionNode
+const mapStateToProps = (state, ownProps) => ({
+    // check if the proposition is in the ancestry path of the selected proposition
+    isInSelectedAncestry: isInSelectedAncestry(ownProps.node.number, state.propositions.selectedPropositionNumber)
+})
+
+export default connect(mapStateToProps)(PropositionNode)

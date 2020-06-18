@@ -30,9 +30,9 @@ export const setRootPropositionNode = (propositionNode = {}) => {
     }
 }
 
-export const setTLP = (TLP = {}) => {
+export const selectProposition = (propositionNumber = '') => {
     return {
-        type: 'SET_TLP',
-        TLP
+        type: 'SELECT_PROPOSITION',
+        propositionNumber
     }
 }

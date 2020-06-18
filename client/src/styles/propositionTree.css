@@ -1,11 +1,22 @@
 .PropositionNode {
+    color: black;
     position: relative;
-    height: 0;
+    height: 1px;
+    background: #000;
+    background-clip: padding-box;
+    border-bottom: 1px solid transparent;
     /* we need width based on content to transform proposition place corrently */
     padding-left: 5rem;
-    border-bottom: 1px solid #000;
     transform-origin: center left;
     transform: rotate(var(--rotation-angle));
+    cursor: pointer;
+}
+
+.PropositionNode.active {
+    color: red;
+    background: red;
+    border-bottom: 1px solid red;
+    z-index: 10;
 }
 
 .rootNodeContainer > .PropositionNode {
@@ -15,11 +26,11 @@
 
 .Proposition {
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0;
     transform:  translate(50%,-50%) rotate(var(--compensating-angle));
     background: #fff;
-    z-index: 1;
+    z-index: 11;
     padding: .1rem;
 }
 
