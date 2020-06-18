@@ -1,3 +1,5 @@
+import { setLoaded } from './loader'
+
 // fetchPropositions
 export const fetchRootPropositionNode = (rootNumber) => {
     // return a thunk
@@ -6,6 +8,7 @@ export const fetchRootPropositionNode = (rootNumber) => {
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
+                dispatch(setLoaded())
                 dispatch(setRootPropositionNode(json))
             })
             .catch(error => console.log)

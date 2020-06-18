@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchRootPropositionNode } from '../actions/propositions'
+import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
 import { Navigation } from './Navigation'
+import Loader from './Loader'
 
 import '../styles/main.css'
 
@@ -12,17 +14,17 @@ class PropositionTreeContainer extends React.Component {
         const propositionNumber = this.props.match.params.number
         const rootNumber = propositionNumber.charAt(0)
 
+        // set loading state
+        this.props.dispatch(setLoading())
         // fetch and set root proposition here
         this.props.dispatch(fetchRootPropositionNode(rootNumber))
 
         // set selectedPropositionNumber on state
-        // set loading state
     }
-    // componentDidUpdate() {
-    //     console.log("updated")
-    // }
+
     render() {
         return (
+            this.props.loading ? <Loader /> :
             <div>
                 <PropositionTree rootPropositionNode={this.props.rootPropositionNode} />
                 <Navigation rootNumber={this.props.match.params.number.charAt(0)} />
@@ -33,7 +35,8 @@ class PropositionTreeContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        rootPropositionNode: state.rootPropositionNode
+        rootPropositionNode: state.propositions.rootPropositionNode,
+        loading: state.loader.loading
     }
 }
 
