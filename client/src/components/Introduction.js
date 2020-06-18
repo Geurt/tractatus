@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import '../styles/introduction.css'
 
 const Introduction = () => (
-    <h1>Introduction page</h1>
+    <div className="Introduction">
+        <h1>Tractatus Logico-Philosophicus</h1>
+        <Link to='/1'>&gt; enter &lt;</Link>
+    </div>
 )
 
 export default Introduction
