@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../styles/main.css'
 
 import { fetchRootPropositionNode } from '../actions/propositions'
-import PropositionNode from '../components/PropositionNode'
+import PropositionTree from './PropositionTree'
 
-class RootProposition extends React.Component {
+class PropositionTreeContainer extends React.Component {
     componentDidMount() {
         const propositionNumber = this.props.match.params.number
         const rootNumber = propositionNumber.charAt(0)
@@ -15,9 +14,7 @@ class RootProposition extends React.Component {
     }
     render() {
         return (
-            <div className="rootNodeContainer">
-                <PropositionNode node={this.props.rootPropositionNode}/>
-            </div>
+            <PropositionTree rootPropositionNode={this.props.rootPropositionNode}/>
         )
     }
 }
@@ -28,4 +25,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(RootProposition)
+export default connect(mapStateToProps)(PropositionTreeContainer)

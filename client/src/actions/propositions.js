@@ -26,3 +26,10 @@ export const setRootPropositionNode = (propositionNode = {}) => {
         propositionNode
     }
 }
+
+export const setTLP = (TLP = {}) => {
+    return {
+        type: 'SET_TLP',
+        TLP
+    }
+}
