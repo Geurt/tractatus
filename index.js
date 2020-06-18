@@ -18,22 +18,22 @@ const TLPpath = './data/output.json'
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/:number', async (req, res) => {
-    const number = req.params.number.replace('.','')    // allow dots
-
     // Production: read the TLP
     // const TLP = await readTLP(TLPpath)
     
     // Development: create a TLP on the fly
     const TLP = await createTLP()
 
+    let number = req.params.number.replace('.','')    // allow dots
+    number = parseInt(number)
+
     // find the proposition in the TLP by number
     const propositionNodeJSON = findProposition(number, TLP)
 
     if (propositionNodeJSON) {
-        res.send(
-            propositionNodeJSON
-            )
+        res.send(propositionNodeJSON)
     } else {
+        console.log('error')
         res.send({ error: "No such proposition."})
     }
 })
