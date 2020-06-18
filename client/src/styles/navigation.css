@@ -1,0 +1,11 @@
+.Navigation {
+    position: fixed;
+    bottom: 5rem;
+    right: 7rem;
+    font-size: 2rem;
+}
+
+.Navigation__link {
+    color: #000;
+    text-decoration: none;
+}

@@ -1,0 +1,44 @@
+.PropositionNode {
+    position: relative;
+    height: 0;
+    /* we need width based on content to transform proposition place corrently */
+    padding-left: 5rem;
+    border-bottom: 1px solid #000;
+    transform-origin: center left;
+    transform: rotate(var(--rotation-angle));
+}
+
+.rootNodeContainer > .PropositionNode {
+    padding: 0;
+    border: none;
+}
+
+.Proposition {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform:  translate(50%,-50%) rotate(var(--compensating-angle));
+    background: #fff;
+    z-index: 1;
+    padding: .1rem;
+}
+
+.Proposition__number {
+    margin: 0;
+    padding: 0;
+}
+
+.PropositionNode__children {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.PropositionNode__child {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

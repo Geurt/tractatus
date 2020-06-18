@@ -9,7 +9,13 @@ const AppRouter = () => (
     <BrowserRouter>
         <Switch>
             <Route path="/" component={Introduction} exact={true}/>
-            <Route path="/:number" component={PropositionTreeContainer} />
+            {/* This is a trick to trigger a new mount when the params change: */}
+            <Route 
+                path="/:number"
+                render={props => <PropositionTreeContainer
+                                    key={props.match.params.number}
+                                    {...props}/>}
+            />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>

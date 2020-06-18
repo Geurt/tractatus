@@ -1,5 +1,6 @@
 import React from 'react'
-import '../styles/main.css'
+
+import '../styles/propositionTree.css'
 
 import PropositionNode from '../components/PropositionNode'
 
