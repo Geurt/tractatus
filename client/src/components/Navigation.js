@@ -6,8 +6,8 @@ export const Navigation = ({ rootNumber }) => {
     const number = parseInt(rootNumber)
     return (
         <nav className="Navigation">
-            { number > 1 && <Link className="Navigation__link" to={`/${number - 1}`}>{`<${number - 1} `}</Link> }
-            { number < 7 && <Link className="Navigation__link" to={`/${number + 1}`}>{` ${number + 1}>`}</Link> }
+            { number > 1 && <Link className="Navigation__link Navigation__link--previous" to={`/${number - 1}`}>{`<${number - 1} `}</Link> }
+            { number < 7 && <Link className="Navigation__link Navigation__link--next" to={`/${number + 1}`}>{` ${number + 1}>`}</Link> }
         </nav>
     )
 }

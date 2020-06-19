@@ -9,7 +9,7 @@ import { isInSelectedAncestry } from '../selectors/propositions'
 // So we create a separate connected version, and use that for the child nodes below:
 import ConnectedPropositionNode from './ConnectedPropositionNode'
 
-class PropositionNode extends React.Component {
+export class PropositionNode extends React.Component {
     onSelectProposition = (e) => {
         e.stopPropagation()
         this.props.dispatch(selectProposition(this.props.node.number))
