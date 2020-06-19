@@ -29,7 +29,16 @@ class PropositionTreeContainer extends React.Component {
         return (
             this.props.loading ? <Loader /> :
             <div>
-                <PropositionTree rootPropositionNode={this.props.rootPropositionNode} />
+                {/*
+                We render the tree once as background and once as foreground;
+                this is a bit of a visual hack to avoid a flickering effect
+                due to the z-index of the selected ancestry changing.
+                Due to stacking context it is unavoidable that non-selected sibling's z-index
+                also changes. So instead we hide non-selected nodes altogether;
+                and we see the background.
+                */}
+                <PropositionTree foreground={false} rootPropositionNode={this.props.rootPropositionNode} />
+                <PropositionTree foreground={true} rootPropositionNode={this.props.rootPropositionNode} />
                 <Navigation rootNumber={this.props.match.params.number.charAt(0)} />
             </div>
         )

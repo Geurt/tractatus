@@ -1,22 +1,46 @@
+.rootNodeContainer {
+    width: 0;
+    height: 0;
+}
+
 .PropositionNode {
-    color: black;
+    color: var(--main-color);
     position: relative;
-    height: 1px;
-    background: #000;
-    background-clip: padding-box;
-    border-bottom: 1px solid transparent;
-    /* we need width based on content to transform proposition place corrently */
     padding-left: 5rem;
     transform-origin: center left;
     transform: rotate(var(--rotation-angle));
     cursor: pointer;
 }
+.PropositionNode::before {
+    /* the graph's edges are :before pseudoelements */
+    content: "";
+    position: absolute;
+    right: 0;
+    transform: translate(0,-50%);
+    width: 100%;
+    height: 1px;
+    background: var(--main-color);
+}
 
-.PropositionNode.active {
-    color: red;
-    background: red;
-    border-bottom: 1px solid red;
+/* 
+    We only show the active foreground nodes
+    Otherwise we hide them, and see the background nodes behind them
+    Reason is that the changing stacking context causes a flickering in the siblings of 
+    the foreground. So we hide them, and show a background instead.
+*/
+.foreground .PropositionNode {
+    visibility: hidden;
+}
+
+.foreground .PropositionNode.active {
+    visibility: visible;
+    color: var(--highlight-color);
     z-index: 10;
+}
+
+.PropositionNode.active::before {
+    height: 3px;
+    background: var(--highlight-color);
 }
 
 .rootNodeContainer > .PropositionNode {

@@ -1,11 +1,12 @@
 import React from 'react'
 
+import '../styles/variables.css'
 import '../styles/propositionTree.css'
 
 import PropositionNode from '../components/PropositionNode'
 
-const PropositionTree = ({ rootPropositionNode }) => (
-            <div className="rootNodeContainer">
+const PropositionTree = ({ rootPropositionNode, foreground }) => (
+            <div className={ foreground ? "rootNodeContainer foreground" : "rootNodeContainer background"}>
                 <PropositionNode node={rootPropositionNode}/>
             </div>
 )

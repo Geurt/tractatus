@@ -6,10 +6,10 @@
 }
 
 .Navigation__link {
-    color: #000;
+    color: var(--main-color);
     text-decoration: none;
 }
 
 .Navigation__link:hover {
-    color: red;
+    color: var(--highlight-color);
 }
