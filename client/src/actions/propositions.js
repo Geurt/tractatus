@@ -1,10 +1,11 @@
 import { setLoaded } from './loader'
 
 // fetchPropositions
-export const fetchRootPropositionNode = (rootNumber) => {
+export const fetchRootPropositionNode = (rootNumber = '1') => {
     // return a thunk
     return (dispatch) => {  // thunks are called with dispatch
-        fetch(`/api/${rootNumber}`)
+        // we return this fetch promise only for testing!
+        return fetch(`/api/${rootNumber}`)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
