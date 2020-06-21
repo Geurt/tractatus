@@ -1,10 +1,8 @@
 import React from 'react';
+import { addDot } from '../utilities/propositions'
 
 const Proposition = ({ proposition }) => {
-    let number = proposition.number
-    if (number.length > 1) {
-        number = number[0] + '.' + number.slice(1,)
-    }
+    const number = addDot(proposition.number)
 
     return (
         <div className="Proposition">

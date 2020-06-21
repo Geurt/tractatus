@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchRootPropositionNode, selectProposition } from '../actions/propositions'
 import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
+import PropositionPreview from './PropositionPreview'
 import { Navigation } from './Navigation'
 import Loader from './Loader'
 
@@ -29,6 +30,7 @@ class PropositionTreeContainer extends React.Component {
         return (
             this.props.loading ? <Loader /> :
             <div>
+                <PropositionPreview />
                 {/*
                 We render the tree once as background and once as foreground;
                 this is a bit of a visual hack to avoid a flickering effect
