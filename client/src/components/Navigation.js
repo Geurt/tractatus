@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/navigation.css'
+import '../styles/Navigation.css'
 
 export const Navigation = ({ rootNumber }) => {
     const number = parseInt(rootNumber)

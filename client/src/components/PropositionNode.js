@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Proposition from './Proposition'
+import { displayProposition } from '../actions/display'
 import { selectProposition } from '../actions/propositions'
 import { isInSelectedAncestry } from '../selectors/propositions'
 
@@ -13,6 +14,11 @@ export class PropositionNode extends React.Component {
     onSelectProposition = (e) => {
         e.stopPropagation()
         this.props.dispatch(selectProposition(this.props.node.number))
+    }
+    onDisplayProosition = (e) => {
+        e.stopPropagation()
+        this.props.dispatch(selectProposition(this.props.node.number))
+        this.props.dispatch(displayProposition())
     }
     render() {
         const proposition = this.props.node.proposition
@@ -28,6 +34,7 @@ export class PropositionNode extends React.Component {
         return (
             <div 
                 onMouseOver={this.onSelectProposition}
+                onClick={this.onDisplayProosition}
                 className= {this.props.isInSelectedAncestry ? "PropositionNode active" : "PropositionNode"}
                 style={{
                         "--rotation-angle": angle + "deg", 

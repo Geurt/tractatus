@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/introduction.css'
+import '../styles/Introduction.css'
 
 const Introduction = () => (
     <div className="Introduction">

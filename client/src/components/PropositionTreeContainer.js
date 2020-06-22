@@ -5,6 +5,7 @@ import { fetchRootPropositionNode, selectProposition } from '../actions/proposit
 import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
 import PropositionPreview from './PropositionPreview'
+import PropositionDisplay from './PropositionDisplay'
 import { Navigation } from './Navigation'
 import Loader from './Loader'
 
@@ -15,7 +16,6 @@ class PropositionTreeContainer extends React.Component {
         const propositionNumber = this.props.match.params.number
         const rootNumber = propositionNumber.charAt(0)
 
-        // set loading state
         this.props.dispatch(setLoading())
         // fetch and set root proposition here
         this.props.dispatch(fetchRootPropositionNode(rootNumber))
@@ -31,6 +31,7 @@ class PropositionTreeContainer extends React.Component {
             this.props.loading ? <Loader /> :
             <div>
                 <PropositionPreview />
+                <PropositionDisplay />
                 {/*
                 We render the tree once as background and once as foreground;
                 this is a bit of a visual hack to avoid a flickering effect

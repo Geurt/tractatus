@@ -1,4 +1,4 @@
-const { isInSelectedAncestry, findProposition } = require('../propositions')
+const { isInSelectedAncestry, findProposition, findAncestry } = require('../propositions')
 const { rootPropositionNode } = require('../../fixtures/testPropositions')
 
 test('Tests if a proposition is in the anscestry of another', () => {
@@ -27,4 +27,22 @@ test('It should return the last matching parent for nonexistent children', () =>
     const result = findProposition('113', rootPropositionNode)
     const expectedResult = rootPropositionNode.children[1].proposition
     expect(result).toBe(expectedResult)
+})
+
+test('It should find the correct ancestry', () => {
+    const result = findAncestry('111', rootPropositionNode)
+    expect(result).toEqual([
+        rootPropositionNode.proposition,
+        rootPropositionNode.children[1].proposition,
+        rootPropositionNode.children[1].children[1].proposition
+    ])
+})
+
+test('It should take care of undefined propositions in ancestry', () => {
+    const result = findAncestry('11131', rootPropositionNode)
+    expect(result).toEqual([
+        rootPropositionNode.proposition,
+        rootPropositionNode.children[1].proposition,
+        rootPropositionNode.children[1].children[1].proposition
+    ])
 })

@@ -22,7 +22,6 @@ class PropositionPreview extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    display: state.display.displayProposition,
     propositionNumber: state.propositions.selectedPropositionNumber,
     proposition: findProposition(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode)
 })

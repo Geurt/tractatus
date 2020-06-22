@@ -1,7 +1,7 @@
 import React from 'react'
 
 import '../styles/variables.css'
-import '../styles/propositionTree.css'
+import '../styles/PropositionTree.css'
 
 import PropositionNode from '../components/PropositionNode'
 

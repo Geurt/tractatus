@@ -24,3 +24,26 @@ export const findProposition = (number, rootNode) => {
     if (node === undefined) return false
     return node.proposition ? node.proposition : undefined
 }
+
+export const findAncestry = (number, rootNode) => {
+    // take '113'...
+    let ancestryNumbers = []
+    let runningNumber = ''
+    number.split('').forEach((digit) => {
+        runningNumber += digit
+        ancestryNumbers.push(runningNumber)
+    })
+    // ...yields ['1','11','113']
+    // and map these to their propositions:
+    let ancestry = ancestryNumbers.map((number) => findProposition(number, rootNode))
+
+    // filter out the nodes that did not have a proposition, and returned undefined
+    ancestry = ancestry.filter((proposition) => !!proposition)
+
+    // There may be duplicates because I choose to let findProposition return the
+    // nearest defined ancestor upon undefined (seems desirable)
+    // So remove those duplicates with a neat trick:
+    ancestry = [...new Set(ancestry)]
+
+    return ancestry
+}
