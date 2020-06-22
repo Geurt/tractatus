@@ -14,7 +14,7 @@ async function getRawPropositions(textFilePath) {
 
 async function getPropositions(tlpPath) {
     const rawPropositions = await getRawPropositions(tlpPath)
-    const propositions = parsePropositions(rawPropositions)
+    const propositions = await parsePropositions(rawPropositions)
     return propositions
 }
 
