@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
 
 import { fetchRootPropositionNode, selectProposition } from '../actions/propositions'
 import { setLoading } from '../actions/loader'
@@ -31,7 +32,9 @@ class PropositionTreeContainer extends React.Component {
             this.props.loading ? <Loader /> :
             <div>
                 <PropositionPreview />
-                <PropositionDisplay />
+                <Route path='/:number/display'>
+                    <PropositionDisplay />
+                </Route>
                 {/*
                 We render the tree once as background and once as foreground;
                 this is a bit of a visual hack to avoid a flickering effect

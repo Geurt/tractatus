@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Proposition from './Proposition'
-import { displayProposition } from '../actions/display'
 import { selectProposition } from '../actions/propositions'
 import { isInSelectedAncestry } from '../selectors/propositions'
+import { history } from '../router/AppRouter'
 
 // A difficulty here: we cannot use the CONNECTED component recursively in the same file
 // So we create a separate connected version, and use that for the child nodes below:
@@ -18,7 +18,8 @@ export class PropositionNode extends React.Component {
     onDisplayProosition = (e) => {
         e.stopPropagation()
         this.props.dispatch(selectProposition(this.props.node.number))
-        this.props.dispatch(displayProposition())
+        history.push(`/${this.props.node.number}/display`)
+
     }
     render() {
         const proposition = this.props.node.proposition

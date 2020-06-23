@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import Modal from './Modal'
 import DisplayedProposition from './DisplayedProposition'
-import { hideProposition } from '../actions/display'
 import { findAncestry } from '../selectors/propositions'
+import { history } from '../router/AppRouter'
 
 import '../styles/PropositionDisplay.css'
 
@@ -22,29 +22,27 @@ class PropositionDisplay extends React.Component {
         }
     }
     onExit = () => {
-        this.props.dispatch(hideProposition())
+        history.push(`/${this.props.selectedPropositionNumber}`)
     }
     render() {
         const propositionAncestry = this.props.propositionAncestry
-        if (this.props.display) {
-            return (
-                <Modal onExit={this.onExit} >
-                    <div className="displayedPropositionsContainer">
-                        { propositionAncestry.map((proposition, i, arr) => (
-                            <DisplayedProposition 
-                                key={ i }
-                                ref={ i === arr.length - 1 ? this.lastProposition : undefined }
-                                proposition={ proposition } />
-                        ))}
-                    </div>
-                </Modal>
-            )
-        } else { return null }
+        return (
+            <Modal onExit={this.onExit} >
+                <div className="displayedPropositionsContainer">
+                    { propositionAncestry.map((proposition, i, arr) => (
+                        <DisplayedProposition 
+                            key={ i }
+                            ref={ i === arr.length - 1 ? this.lastProposition : undefined }
+                            proposition={ proposition } />
+                    ))}
+                </div>
+            </Modal>
+        )
     }
 }
 
 const mapStateToProps = (state) => ({
-    display: state.display.displayProposition,
+    selectedPropositionNumber: state.propositions.selectedPropositionNumber,
     propositionAncestry: findAncestry(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode)
 })
 
