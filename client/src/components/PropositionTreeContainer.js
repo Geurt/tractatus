@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-import { fetchRootPropositionNode, selectProposition } from '../actions/propositions'
+import { setSavedRootPropositionNode, fetchRootPropositionNode, selectProposition } from '../actions/propositions'
 import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
 import PropositionPreview from './PropositionPreview'
@@ -17,11 +17,19 @@ class PropositionTreeContainer extends React.Component {
         const propositionNumber = this.props.match.params.number
         const rootNumber = propositionNumber.charAt(0)
 
-        this.props.dispatch(setLoading())
-        // fetch and set root proposition here
-        this.props.dispatch(fetchRootPropositionNode(rootNumber))
+        const needsToLoad = !this.props.loadedNumbers[rootNumber]
+        // we fetch the rootproposition if it isn't already loaded not already loaded
+        // else we use the saved version and don't bother fetching
 
-        // set selectedPropositionNumber on state
+        if (needsToLoad) {
+            this.props.dispatch(setLoading())
+            // fetch and set root proposition here
+            this.props.dispatch(fetchRootPropositionNode(rootNumber))
+        } else {
+            this.props.dispatch(setSavedRootPropositionNode(rootNumber))
+        }
+
+        // set selectedPropositionNumber on state (for propositions further down the tree)
         if (propositionNumber.length > 1) {
             this.props.dispatch(selectProposition(propositionNumber))
         }
@@ -53,6 +61,7 @@ class PropositionTreeContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        loadedNumbers: state.savedRootPropositions.map(prop => !!prop),
         rootPropositionNode: state.propositions.rootPropositionNode,
         loading: state.loader.loading
     }

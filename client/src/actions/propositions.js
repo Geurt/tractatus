@@ -1,4 +1,5 @@
 import { setLoaded } from './loader'
+import { saveRootProposition } from './saveRootPropositions'
 
 // fetchPropositions
 export const fetchRootPropositionNode = (rootNumber = '1') => {
@@ -11,8 +12,16 @@ export const fetchRootPropositionNode = (rootNumber = '1') => {
             .then(json => {
                 dispatch(setLoaded())
                 dispatch(setRootPropositionNode(json))
+                dispatch(saveRootProposition(json))
             })
             .catch(error => console.log)
+    }
+}
+
+export const setSavedRootPropositionNode = (rootNumber = '1') => {
+    return (dispatch, getState) => {
+        const rootNode = getState().savedRootPropositions[rootNumber]
+        dispatch(setRootPropositionNode(rootNode))
     }
 }
 
