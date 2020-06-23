@@ -2,8 +2,8 @@ export const isInSelectedAncestry = (number, selectedNumber = '') => {
     return selectedNumber.toString().startsWith(number.toString())
 }
 
-// because of the way we've structured the data, we can find propositions very efficiently:
-export const findProposition = (number, rootNode) => {
+// because of the way we've structured the data, we can find proposition nodes very efficiently:
+export const findNode = (number, rootNode) => {
     if (isNaN(number)) return undefined
 
     // a check if the number is in the right rootNode
@@ -20,6 +20,12 @@ export const findProposition = (number, rootNode) => {
             node = node.children[digit]
         }
     })
+
+    return node
+}
+
+export const findProposition = (number, rootNode) => {
+    const node = findNode(number, rootNode)
 
     if (node === undefined) return false
     return node.proposition ? node.proposition : undefined
@@ -46,4 +52,41 @@ export const findAncestry = (number, rootNode) => {
     ancestry = [...new Set(ancestry)]
 
     return ancestry
+}
+
+export const findSiblings = (number, rootNode) => {
+    const parentNumber = number.slice(0,-1)
+    const parentNode = findNode(parentNumber, rootNode)
+    if (parentNode === undefined) return undefined
+    try {
+        const siblings = parentNode.children
+        return siblings
+    } catch(e) {
+        console.log(e)
+    }
+
+}
+
+export const findPreviousSiblingNumber = (number, rootNode) => {
+    const siblings = findSiblings(number, rootNode) // may be undefined
+    if (!siblings) return undefined
+    try  {
+        const currentIndex = number.slice(-1)
+        const previousSibling = siblings[parseInt(currentIndex) - 1]
+        return previousSibling ? previousSibling.number : undefined
+    } catch(e) {
+        console.log(e)
+    }
+}
+
+export const findNextSiblingNumber = (number, rootNode) => {
+    const siblings = findSiblings(number, rootNode) // may be undefined
+    if (!siblings) return undefined
+    try  {
+        const currentIndex = number.slice(-1)
+        const nextSibling = siblings[parseInt(currentIndex) + 1]
+        return nextSibling ? nextSibling.number : undefined
+    } catch(e) {
+        console.log(e)
+    }
 }

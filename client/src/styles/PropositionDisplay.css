@@ -1,4 +1,4 @@
-.displayedPropositionsContainer {
+.displayed-propositions-container {
     box-sizing: border-box;
     background: #fff;
     padding: 5rem 5rem 20rem 5rem;
@@ -34,4 +34,21 @@
 .displayed-proposition__number {
     font-size: 1rem;
     text-align: center;
+}
+
+
+.displayed-propositions-container__link-container {
+    display: flex;
+}
+.displayed-propositions-container__link {
+    color: var(--light-color)
+}
+.displayed-propositions-container__link:hover {
+    color: var(--highlight-color)
+}
+.displayed-propositions-container__link--previous {
+}
+
+.displayed-propositions-container__link--next {
+    margin-left: auto;
 }
