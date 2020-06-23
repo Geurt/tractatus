@@ -30,7 +30,10 @@ class PropositionTreeContainer extends React.Component {
         }
 
         // set selectedPropositionNumber on state (for propositions further down the tree)
-        if (propositionNumber.length > 1) {
+        // and also for root propositions, but ONLY when on display
+        const isOnDisplay = this.props.location.pathname.match(/\/(\d)\/display/)
+        console.log(isOnDisplay)
+        if (propositionNumber.length > 1 || isOnDisplay) {
             this.props.dispatch(selectProposition(propositionNumber))
         }
     }
