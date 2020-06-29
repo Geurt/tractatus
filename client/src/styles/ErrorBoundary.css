@@ -1,0 +1,12 @@
+.error_message {
+    text-align: center;
+}
+
+.try_reloading {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.try_reloading:hover {
+    color: var(--highlight-color);
+}

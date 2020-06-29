@@ -2,6 +2,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import propositionsReducer from '../reducers/propositionsReducer'
 import loaderReducer from '../reducers/loaderReducer'
+import errorReducer from '../reducers/errorReducer'
 import { saveRootPropositionsReducer } from '../reducers/saveRootPropositionsReducer'
 
 // this is just because we want to use redux devtools with thunk:
@@ -12,6 +13,7 @@ export default () => {
         combineReducers({
             propositions: propositionsReducer,
             loader: loaderReducer,
+            errors: errorReducer,
             savedRootPropositions: saveRootPropositionsReducer
         }),
         // without redux devtools, applying middleware is simple:

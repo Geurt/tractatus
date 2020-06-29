@@ -4,6 +4,7 @@ import { Router, Route, Switch } from 'react-router-dom'
 import PropositionTreeContainer from '../components/PropositionTreeContainer'
 import Introduction from '../components/Introduction'
 import NotFound from '../components/NotFound'
+import ErrorBoundary from '../components/ErrorBoundary'
 
 import { createBrowserHistory } from "history"
 
@@ -14,12 +15,14 @@ const AppRouter = () => (
         <Switch>
             <Route path="/" component={Introduction} exact={true}/>
             {/* The key is a trick to trigger a new mount when the params change: */}
-            <Route 
-                path="/:number"
-                render={props => <PropositionTreeContainer
-                    key={props.match.params.number}
-                    {...props}/>}
-                    />
+            <ErrorBoundary>
+                <Route 
+                    path="/:number"
+                    render={props => <PropositionTreeContainer
+                        key={props.match.params.number}
+                        {...props}/>}
+                />
+            </ErrorBoundary>
             <Route component={NotFound} />
         </Switch>
     </Router>
