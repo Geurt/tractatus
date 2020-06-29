@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Proposition from './Proposition'
 import { selectProposition } from '../actions/propositions'
@@ -63,3 +64,14 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 export default connect(mapStateToProps)(PropositionNode)
+
+PropositionNode.propTypes = {
+    isInSelectedAncestry: PropTypes.bool,
+    node: PropTypes.shape({
+        proposition: PropTypes.object,
+        number: PropTypes.string,
+        angle: PropTypes.number,
+        compensatingAngle: PropTypes.number,
+        children: PropTypes.array
+    })
+}

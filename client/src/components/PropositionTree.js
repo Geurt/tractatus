@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import '../styles/variables.css'
 import '../styles/PropositionTree.css'
@@ -12,3 +13,8 @@ const PropositionTree = ({ rootPropositionNode, foreground }) => (
 )
 
 export default PropositionTree
+
+PropositionTree.propTypes = {
+    foreground: PropTypes.bool,
+    rootPropositionNode: PropTypes.object
+}

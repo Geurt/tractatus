@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Modal from './Modal'
 import DisplayedProposition from './DisplayedProposition'
@@ -60,3 +61,10 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(PropositionDisplay)
+
+PropositionDisplay.propTypes = {
+    propositionAncestry: PropTypes.array,
+    nextSiblingNumber: PropTypes.string,
+    previousSiblingNumber: PropTypes.string,
+    selectedPropositionNumber: PropTypes.string
+}

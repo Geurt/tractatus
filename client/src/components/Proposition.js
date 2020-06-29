@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { addDot } from '../utilities/propositions'
 
 const Proposition = ({ proposition }) => {
@@ -12,3 +14,9 @@ const Proposition = ({ proposition }) => {
 }
 
 export default Proposition
+
+Proposition.propTypes = {
+    proposition: PropTypes.shape({
+        number: PropTypes.string
+    })
+}

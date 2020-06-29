@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { addDot } from '../utilities/propositions'
 import parse from 'html-react-parser'
@@ -28,3 +29,10 @@ const DisplayedProposition = React.forwardRef((props, ref) => {
 })
 
 export default DisplayedProposition
+
+DisplayedProposition.propTypes = {
+    proposition: PropTypes.shape({
+        number: PropTypes.string,
+        text: PropTypes.string
+    })
+}

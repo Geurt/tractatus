@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { setSavedRootPropositionNode, fetchRootPropositionNode, selectProposition } from '../actions/propositions'
 import { setLoading } from '../actions/loader'
@@ -70,3 +71,9 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(PropositionTreeContainer)
+
+PropositionTreeContainer.propTypes = {
+    loading: PropTypes.bool,
+    rootPropositionNode: PropTypes.object,
+    loadedNumbers: PropTypes.array
+}

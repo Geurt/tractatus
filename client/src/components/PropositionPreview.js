@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import parse from 'html-react-parser'
+import PropTypes from 'prop-types'
 
 import '../styles/PropositionPreview.css'
 import { findProposition } from '../selectors/propositions'
@@ -27,3 +28,13 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(PropositionPreview)
+
+PropositionPreview.propTypes = {
+    proposition: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.shape({
+            number: PropTypes.string,
+            text: PropTypes.string
+        })
+    ])
+}
