@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { addDot } from '../utilities/propositions'
 import parse from 'html-react-parser'
 
@@ -13,7 +15,9 @@ const DisplayedProposition = React.forwardRef((props, ref) => {
         return (
             <div ref={ref} className="displayed-proposition">
                 <h2 className="displayed-proposition__number">
-                    {addDot(proposition.number)}
+                    <Link to={`/${proposition.number}/display`}>
+                        {addDot(proposition.number)}
+                    </Link>
                 </h2>
                 <p className="displayed-proposition__text proposition__text">
                     {parse(proposition.text)}
