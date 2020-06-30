@@ -1,6 +1,26 @@
 // Note that the children array is zero based
 // It has empty elements at zero sometimes (when there is no proposition there)
 
+export const proposition = {
+    number: "123",
+    text: "Proposition 123"
+}
+
+export const propositionAncestry = [
+    {
+        number: "1",
+        text: "Proposition 1"  
+    },
+    {
+        number: "12",
+        text: "Proposition 12"      
+    },
+    {
+        number: "123",
+        text: "Proposition 123" 
+    }
+]
+
 export const rootPropositionNode = {
     number: "1",
     proposition: {
@@ -22,7 +42,8 @@ export const rootPropositionNode = {
                     proposition: {
                         number: "111",
                         text: "Proposition 111"
-                    }
+                    },
+                    children: []
                 }
             ]
 

@@ -13,7 +13,7 @@ describe('Async actions', () => {
         fetchMock.restore()
       })
     
-    test('Should dispatch SET_ROOT_NODE and SET_LOADED after fecthing root node', () => {
+    test('Should dispatch SET_ROOT_PROPOSITION_NODE, SAVE_ROOT_PROPOSITION and SET_LOADED after fecthing root node', () => {
         const mockPropositionNode = {
             number: '3'
         }
@@ -30,11 +30,15 @@ describe('Async actions', () => {
             {
                 type: 'SET_ROOT_PROPOSITION_NODE',
                 propositionNode: mockPropositionNode
+            },
+            {
+                type: 'SAVE_ROOT_PROPOSITION',
+                rootProposition: mockPropositionNode
             }
         ]
 
         // now we check if fetchRootPropositionNode fires the set root node action
-        // (we ask our mockStore for it's called actions through getActions())
+        // (we ask our mockStore for its called actions through getActions())
         // (note that this chaining requires fetchRootPropositionNode to return a promise!)
         // (below we also need to return because it's async, promise based, so Jest knows the test finishes)
         return store.dispatch(fetchRootPropositionNode('3')).then(() => {

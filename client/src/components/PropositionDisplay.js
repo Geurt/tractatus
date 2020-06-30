@@ -1,16 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import Modal from './Modal'
 import DisplayedProposition from './DisplayedProposition'
 import { findAncestry, findPreviousSiblingNumber, findNextSiblingNumber } from '../selectors/propositions'
-import { history } from '../router/AppRouter'
 
 import '../styles/PropositionDisplay.css'
 
-class PropositionDisplay extends React.Component {
+export class PropositionDisplay extends React.Component {
     constructor(props) {
         super(props)
         this.lastProposition = React.createRef()
@@ -24,7 +23,8 @@ class PropositionDisplay extends React.Component {
         }
     }
     onExit = () => {
-        history.push(`/${this.props.selectedPropositionNumber}`)
+        // to access history on props, we export below through withRouter()
+        this.props.history.push(`/${this.props.selectedPropositionNumber}`)
     }
     render() {
         const propositionAncestry = this.props.propositionAncestry
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => ({
     propositionAncestry: findAncestry(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode)
 })
 
-export default connect(mapStateToProps)(PropositionDisplay)
+export default connect(mapStateToProps)(withRouter(PropositionDisplay))
 
 PropositionDisplay.propTypes = {
     propositionAncestry: PropTypes.array,

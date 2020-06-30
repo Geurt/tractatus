@@ -28,8 +28,8 @@ afterEach(() => {
 test('Should render its proposition', () => {
     const propositionNode = {
         number: "123",
-        angle: "10",
-        compensatingAngle: "-10",
+        angle: 10,
+        compensatingAngle: -10,
         proposition: {
             number: "123",
             text: "Lorem"
@@ -49,8 +49,8 @@ test('Should render its proposition', () => {
 test('Should render its children recursively', () => {
     const childNode = {
         number: "456",
-        angle: "10",
-        compensatingAngle: "-10",
+        angle: 10,
+        compensatingAngle: -10,
         proposition: {
             number: "456",
             text: "Lorem"
@@ -60,8 +60,8 @@ test('Should render its children recursively', () => {
 
     const propositionNode = {
         number: "123",
-        angle: "10",
-        compensatingAngle: "-10",
+        angle: 10,
+        compensatingAngle: -10,
         proposition: {
             number: "123",
             text: "Lorem"

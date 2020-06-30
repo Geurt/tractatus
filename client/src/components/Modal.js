@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Modal = (props) => (
     <div className="Modal">
-        <div className="Modal--background"
+        <div className="Modal--background" data-testid="modal-background"
                 onClick={props.onExit}></div>
         <div className="Modal--children">
             { props.children }
