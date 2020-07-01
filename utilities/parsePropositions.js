@@ -122,8 +122,17 @@ const parseSpecialCharacters = (proposition) => {
         [/{\\stretchyspace(.*)}/g, '$1'],
         [/{\\verystretchyspace(.*)}/g, '$1'],
         [/etc.\\/g, 'etc.'],
-        [/\\glqq{}(.*?)\\?grqq{}/g,'``$1\'\''],  // quotes only in the german
-        [/\\glq{}(.*?)\\?grq{}/g,'`$1\'']
+        [/\\glqq{}(.*?)\\?grqq{}/g,'\'\'$1\'\''],  // quotes only in the german
+        [/\\glq{}(.*?)\\?grq{}/g,'\'$1\''],
+        [/``/g,'\“'],                // mathjax doesn't pick up these backticks (outside $ $), and babel ruins them
+        [/''/g,'\”'],                // and let's match closing quotes in style
+        [/\\Not/g,'\\sim'],
+        [/\\DotOp/g, '.'],
+        [/\\Implies/g,'\\supset'],
+        [/\\fivedots/g,'.....'],
+        [/\\BarOp/g,'\\mid'],
+        // some mathjax-unsupported environments
+        [/\\mbox{(.*?)}/g,'\$ $1 \$']
     ]
     specialCharacters.forEach((character) => {
         proposition.text = proposition.text.replace(character[0],character[1])
@@ -163,13 +172,17 @@ const parseLaTex = (proposition) => {
             },{
                 MathJax: {
                     tex: {
-                        inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        inlineMath: [
+                            ['$', '$'], 
+                            ['\\(', '\\)']
+                        ]
                     },
                     speakText: false
                 }
             }, (parsedText) => {
                 // the callback from mathjax-node-page is where we resolve the promise 
                 proposition.text = parsedText
+                console.log(proposition.number)
                 resolve(proposition)
             })
     })
