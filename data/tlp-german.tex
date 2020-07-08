@@ -2088,53 +2088,105 @@ Schemata folgender Art darstellen (\glqq{}W\grqq{} bedeutet
 \glqq{}F\grqq{} unter der Reihe der Elementars&auml;tze bedeuten
 in leichtverst&auml;ndlicher Symbolik deren Wahrheitsm&ouml;glichkeiten):
 
-\begin{center}
-\begin{tabular}[t]{c|c|c}
-p & q & r\\
-\hline
-\hline
-\Strut W & W & W\\
-\hline
-\Strut F & W & W\\
-\hline
-\Strut W & F & W\\
-\hline
-\Strut W & W & F\\
-\hline
-\Strut F & F & W\\
-\hline
-\Strut F & W & F\\
-\hline
-\Strut W & F & F\\
-\hline
-\Strut F & F & F\\
-\hline
-\end{tabular}
-\hspace{0.5cm}
-\begin{tabular}[t]{c|c}
-p & q\\
-\hline
-\hline
-\Strut W & W\\
-\hline
-\Strut F & W\\
-\hline
-\Strut W & F\\
-\hline
-\Strut F & F\\
-\hline
-\end{tabular}
-\hspace{0.5cm}
-\begin{tabular}[t]{c}
-p\\
-\hline
-\hline
-\Strut W\\
-\hline
-\Strut F\\
-\hline
-\end{tabular}
-\end{center}
+<div class="truthtable__container">
+    <table class="truthtable">
+        <tr>
+            <th>p</th>
+            <th>q</th>
+            <th>r</th>
+        </tr>
+        <tr>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>W</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>F</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>W</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>F</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>W</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>F</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>F</td>
+            <td>F</td>
+        </tr>
+    </table>
+
+    <table class="truthtable">
+        <tr>
+            <th>p</th>
+            <th>q</th>
+        </tr>
+        <tr>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>F</td>
+        </tr>
+    </table>
+
+    <table class="truthtable">
+        <tr>
+            <th>p</th>
+        </tr>
+        <tr>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+        </tr>
+        <tr>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>F</td>
+        </tr>
+    </table>
+</div>
 }
 
 
@@ -2213,21 +2265,51 @@ ausdr&uuml;cken wie die Schemata der \glqq{}W\grqq{} und \glqq{}F\grqq{}.}
 
 \PropositionG{4.442}
 {Es ist \zumBeispiel:
-\raisebox{-2.3\baselineskip}{\glqq{}}\begin{tabular}{c|c|c}
-p & q &\\
-\hline
-\hline
-\Strut W & W & W\\
-\hline
-\Strut F & W & W\\
-\hline
-\Strut W & F &\\
-\hline
-\Strut F & F & W\\
-\hline
-\end{tabular}\\
-\phantom{Es ist \zumBeispiel: \glqq{}\begin{tabular}{c|c|c}W&W&W\end{tabular}}
-\smash[t]{\raisebox{5.8\baselineskip}{\grqq{}}} ein Satzzeichen.
+
+<div class="truthtable__container">
+    <span>``</span>
+    <table class="truthtable">
+        <tr>
+            <th>p</th>
+            <th>q</th>
+            <th class="truthtable__separator--left"></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator"></td>
+            <td class="truthtable__separator--both"></td>
+            <td class="truthtable__separator"></td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>W</td>
+            <td class="truthtable__separator--left"></td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>W</td>
+            <td class="truthtable__separator--left"></td>
+            <td>W</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>F</td>
+            <td class="truthtable__separator--left"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>F</td>
+            <td class="truthtable__separator--left"></td>
+            <td>W</td>
+        </tr>
+    </table>
+    <span>''</span>
+</div>
+
+ein Satzzeichen.
 
 (Frege's \glqq{}\DPtypo{Urteilstrich}{Urteilsstrich}\grqq{} \glqq{}$\vdash$\grqq{} ist logisch ganz
 % -----File: 096.png---
@@ -2245,7 +2327,7 @@ allein schon ein Ausdruck der Wahrheitsbedingungen.
 Schreiben wir diese Kolonne als Reihe
 hin, so wird das Satzzeichen zu:
 
-\glqq{}(WW--W)($p$, $q$)\grqq{} oder deutlicher \glqq{}(WWFW)($p$, $q$)\grqq{}.
+\glqq{}(WW-W)($p$, $q$)\grqq{} oder deutlicher \glqq{}(WWFW)($p$, $q$)\grqq{}.
 
 (Die Anzahl der Stellen in der linken Klammer
 ist durch die Anzahl der Glieder in der rechten
@@ -2477,27 +2559,88 @@ Das ist die Grundlage der Wahrscheinlichkeitslehre.}
 Elementars&auml;tzen lassen sich in einem Schema
 folgender Art hinschreiben:
 
-\begin{table*}[!h]
-\footnotesize\noindent\centering
-\begin{tabular}{@{}c@{~}l@{~}l@{}}
-(\Wahr\Wahr\Wahr\Wahr)($p, q$) & Tautologie & (Wenn $p$, so $p$; und wenn $q$, so $q$.) ($p \Implies p \DotOp q \Implies q$)\\
-(\False\Wahr\Wahr\Wahr)($p, q$) & in Worten: & Nicht beides $p$ und $q$. ($\Not{(p \DotOp q)}$)\\
-(\Wahr\False\Wahr\Wahr)($p, q$) & \DittoInWorten & Wenn $q$, so $p$. ($q \Implies p$)\\
-(\Wahr\Wahr\False\Wahr)($p, q$) & \DittoInWorten & Wenn $p$, so $q$. ($p \Implies q$)\\
-(\Wahr\Wahr\Wahr\False)($p, q$) & \DittoInWorten & $p$ oder $q$. ($p \lor q$)\\
-(\False\False\Wahr\Wahr)($p, q$) & \DittoInWorten & Nicht $q$. ($\Not{q}$)\\
-(\False\Wahr\False\Wahr)($p, q$) & \DittoInWorten & Nicht $p$. ($\Not{p}$)\\
-(\False\Wahr\Wahr\False)($p, q$) & \DittoInWorten & $p$, oder $q$, aber nicht beide. ($p \DotOp \Not{q} : \lor : q \DotOp \Not{p}$)\\
-(\Wahr\False\False\Wahr)($p, q$) & \DittoInWorten & Wenn $p$, so $q$; und wenn $q$, so $p$. ($p \equiv q$)\\
-(\Wahr\False\Wahr\False)($p, q$) & \DittoInWorten & $p$\\
-(\Wahr\Wahr\False\False)($p, q$) & \DittoInWorten & $q$\\
-(\False\False\False\Wahr)($p, q$) & \DittoInWorten & Weder $p$ noch $q$. ($\Not{p} \DotOp \Not{q}$) oder ($p \BarOp q$)\\
-(\False\False\Wahr\False)($p, q$) & \DittoInWorten & $p$ und nicht $q$. ($p \DotOp \Not{q}$)\\
-(\False\Wahr\False\False)($p, q$) & \DittoInWorten & $q$ und nicht $p$. ($q \DotOp \Not{p}$)\\
-(\Wahr\False\False\False)($p, q$) & \DittoInWorten & $q$ und $p$. ($q \DotOp p$)\\
-(\False\False\False\False)($p, q$) & Kontradiktion & ($p$ und nicht $p$; und $q$ und nicht $q$.) ($p \DotOp \Not{p} \DotOp q \DotOp \Not{q}$)\\
-\end{tabular}
-\end{table*}
+<table class="table5101">
+    <tr>
+        <td>(WWWW)($p, q$)</td> 
+        <td>Tautologie</td> 
+        <td>(Wenn $p$, so $p$; und wenn $q$, so $q$.) <br/> ($p \Implies p \DotOp q \Implies q$)</td>
+    </tr>
+    <tr>
+        <td>(FWWW)($p, q$)</td>
+        <td>in Worten:</td> 
+        <td>Nicht beides $p$ und $q$. ($\Not{(p \DotOp q)}$)</td>
+    </tr>
+    <tr>
+        <td>(WFWW)($p, q$)</td> 
+        <td>" &nbsp &nbsp "</td>
+        <td>Wenn $q$, so $p$. ($q \Implies p$)</td>
+    </tr>
+    <tr>
+        <td>(WWFW)($p, q$)</td> 
+        <td>" &nbsp &nbsp "</td>
+        <td>Wenn $p$, so $q$. ($p \Implies q$)</td>
+    </tr>
+    <tr>
+        <td>(WWWF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$p$ oder $q$. ($p \lor q$)</td>
+    </tr>
+    <tr>
+        <td>(FFWW)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>Nicht $q$. ($\Not{q}$)</td>
+    </tr>
+    <tr>
+        <td>(FWFW)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>Nicht $p$. ($\Not{p}$)</td>
+    </tr>
+    <tr>
+        <td>(FWWF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$p$, oder $q$, aber nicht beide. <br/> ($p \DotOp \Not{q} : \lor : q \DotOp \Not{p}$)</td>
+    </tr>
+    <tr>
+        <td>(WFFW)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>Wenn $p$, so $q$; und wenn $q$, so $p$. </br> ($p \equiv q$)</td>
+    </tr>
+    <tr>
+        <td>(WFWF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$p$</td>
+    </tr>
+    <tr>
+        <td>(WWFF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$q$</td>
+    </tr>
+    <tr>
+        <td>(FFFW)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>Weder $p$ noch $q$. <br/> ($\Not{p} \DotOp \Not{q}$) oder ($p \BarOp q$)</td>
+    </tr>
+    <tr>
+        <td>(FFWF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$p$ und nicht $q$. ($p \DotOp \Not{q}$)</td>
+    </tr>
+    <tr>
+        <td>(FWFF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$q$ und nicht $p$. ($q \DotOp \Not{p}$)</td>
+    </tr>
+    <tr>
+        <td>(WFFF)($p, q$)</td>
+        <td>" &nbsp &nbsp "</td>
+        <td>$q$ und $p$. ($q \DotOp p$)</td>
+    </tr>
+    <tr>
+        <td>(FFFF)($p, q$)</td>
+        <td>Kontradiktion</td>
+        <td>($p$ und nicht $p$; und $q$ und nicht $q$.) <br/> ($p \DotOp \Not{p} \DotOp q \DotOp \Not{q}$)</td>
+    </tr>
+</table>
 
 {\verystretchyspace
 Diejenigen Wahrheitsm&ouml;glichkeiten seiner
@@ -4013,32 +4156,22 @@ von einem Satz zum anderen.}
 
 
 \PropositionG{6.02}
-{Und so kommen wir zu den Zahlen: Ich definiere
-\begin{gather*}
-x = \Omega^{0}{}' x \text{ Def.\ und}\\
-\Omega'\Omega^{\nu}{}'x = \Omega^{\nu+1}{}'x \text{ Def.}
-\end{gather*}
-
+{Und so kommen wir zu den Zahlen: Ich definiere <br/>
+$x = \Omega^{0}{}' x \text{ Def. }$ <br/>
+und <br/>
+$\Omega'\Omega^{\nu}{}'x = \Omega^{\nu+1}{}'x \text{ Def.}$ <br/>
 Nach diesen Zeichenregeln schreiben wir also
-die Reihe $x$, $\Omega'x$, $\Omega'\Omega'x$, $\Omega'\Omega'\Omega'x$, $\fivedots$
-\[
-\text{so: }\Omega^{0}{}'x, \Omega^{0+1}{}'x, \Omega^{0+1+1}{}'x, \Omega^{0+1+1+1}{}'x, \fivedots
-\]
-
-Also schreibe ich statt \glqq{}$[x, \xi, \Omega'\xi]$\grqq{}:
-\[
-\text{\quotedblbase} [\Omega^{0}{}'x, \Omega^{\nu}{}'x, \Omega^{\nu+1}{}'x]\text{\grqq{}.}
-\]
-
-Und definiere:
-\[
-\begin{array}{l}\\
-0 + 1 = 1\text{ Def.}\\
-0 + 1 + 1 = 2\text{ Def.}\\
-0 + 1 + 1 + 1 = 3\text{ Def.}\\
-\text{(\undSoFort)}
-\end{array}
-\]
+die Reihe <br/>
+$x$, $\Omega'x$, $\Omega'\Omega'x$, $\Omega'\Omega'\Omega'x\fivedots$ <br/>
+so: <br/>
+$\Omega^{0}{}'x$, $\Omega^{0+1}{}'x$, $\Omega^{0+1+1}{}'x$, $\Omega^{0+1+1+1}{}'x$ \fivedots <br/>
+Also schreibe ich statt ``$[x, \xi, \Omega'\xi]$'', <br/>
+``$[\Omega^{0}{}'x, \Omega^{\nu}{}'x, \Omega^{\nu+1}{}'x]\text{''.}$ <br/>
+Und definiere: <br/>
+$0 + 1 = 1\text{ Def.}$ </br>
+$0 + 1 + 1 = 2\text{ Def.}$ </br>
+$0 + 1 + 1 + 1 = 3\text{ Def.}$ </br>
+(usf.)
 }
 
 
@@ -4525,14 +4658,10 @@ Ausdr&uuml;cke durch andere ersetzen.}}
 
 
 \PropositionG{6.241}
-{So lautet der Beweis des Satzes $2 \times 2 = 4$:
-\begin{gather*}
-(\Omega^{\nu})^{\mu}{}'x = \Omega^{\nu \times \mu}{}'x \text{ Def.}\\
-\begin{split}
-\Omega^{2 \times 2}{}'x = (\Omega^{2})^{2}{}'x = (\Omega^{2})^{1 + 1}{}'x = \Omega^{2}{}'\Omega^{2}{}'x = \Omega^{1 + 1}{}'\Omega^{1 + 1}{}'x\\
-= (\Omega'\Omega)'(\Omega'\Omega)'x = \Omega'\Omega'\Omega'\Omega'x = \Omega^{1 + 1 + 1 + 1}{}'x = \Omega^{4}{}'x.
-\end{split}
-\end{gather*}
+{So lautet der Beweis des Satzes $2 \times 2 = 4$: <br/>
+$(\Omega^{\nu})^{\mu}{}'x = \Omega^{\nu \times \mu}{}'x \text{ Def.} $<br/>
+$\Omega^{2 \times 2}{}'x = (\Omega^{2})^{2}{}'x = (\Omega^{2})^{1 + 1}{}'x = \Omega^{2}{}'\Omega^{2}{}'x = \Omega^{1 + 1}{}'\Omega^{1 + 1}{}'x$ <br/>
+$= (\Omega'\Omega)'(\Omega'\Omega)'x = \Omega'\Omega'\Omega'\Omega'x = \Omega^{1 + 1 + 1 + 1}{}'x = \Omega^{4}{}'x.$
 }
 
 

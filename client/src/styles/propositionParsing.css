@@ -51,3 +51,64 @@ for single line propositions
 .proposition__image--brackets03-en, .proposition__image--brackets03-de {
     width: 25%;
 }
+
+.truthtable__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.truthtable {
+    border-collapse: collapse;
+}
+
+.truthtable th {
+    border-left: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+    padding: .5rem 1rem;
+}
+
+.truthtable td {
+    border-left: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+    padding: .5rem 1rem;
+}
+
+.truthtable td:first-child {
+    border-left: none;
+}
+
+.truthtable th:first-child {
+    border-left: none;
+}
+
+.truthtable .truthtable__separator {
+    height: .2rem;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--main-color);
+    border-left: none;
+}
+
+.truthtable .truthtable__separator--left {
+    padding: 0 .1rem 0 0;
+    border-bottom: none;
+    border-left: 1px solid var(--main-color);
+}
+
+.truthtable .truthtable__separator--both {
+    padding: 0 .1rem 0 0;
+    border-bottom: none;
+    border-left: 1px solid var(--main-color);
+    border-right: 1px solid var(--main-color);
+}
+
+/* custom tweaks */
+.table5101 {
+    margin-bottom: 1rem;
+}
+.table5101 td:first-child{
+    width: 7rem;
+}
+.table5101 td:last-child{
+    padding-left: 1rem;
+}

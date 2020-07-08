@@ -1,15 +1,14 @@
 .PropositionPreview {
-    /* just for sketch */
     position: absolute;
     top: 0;
     left: 0;
     width: 30%;
-    color: var(--light-color);
     padding: 3rem;
+    opacity: .25;
 }
 
 .PropositionPreview img {
-    opacity: .1;
+    opacity: .5;
 }
 
 .PropositionPreview--number {
