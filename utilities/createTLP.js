@@ -5,7 +5,6 @@ const { getPropositions } = require('./getPropositions')
 const { structurePropositions } = require('./structureTLP')
 const { addStyleParams } = require('./styleTLP')
 
-//const tlpPath = path.join(__dirname, './data/test.txt')
 //const tlpPath = path.join(__dirname, '../data/tlp-german.tex')
 const tlpPath = path.join(__dirname, '../data/tlp-english.tex')
 

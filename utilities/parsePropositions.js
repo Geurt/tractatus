@@ -182,7 +182,6 @@ const parseLaTex = (proposition) => {
             }, (parsedText) => {
                 // the callback from mathjax-node-page is where we resolve the promise 
                 proposition.text = parsedText
-                console.log(proposition.number)
                 resolve(proposition)
             })
     })
@@ -217,6 +216,7 @@ async function parseProposition(rawProposition) {
 
     // note that parseLaTex turns the result into a promise
     return parseLaTex(proposition) // returns a promise for each proposition, waiting on LaTex parsing
+    //return proposition
 }
 
 module.exports = {
