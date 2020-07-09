@@ -11,7 +11,7 @@ class PropositionPreview extends React.Component {
     render() {
         const proposition = this.props.proposition
         const propositionNumber = proposition ? addDot(proposition.number) : undefined
-        const propositionText = proposition ? proposition.text : undefined
+        const propositionText = proposition ? proposition[this.props.language] : undefined
 
         return (
             <div className="PropositionPreview">
@@ -24,7 +24,8 @@ class PropositionPreview extends React.Component {
 
 const mapStateToProps = (state) => ({
     propositionNumber: state.propositions.selectedPropositionNumber,
-    proposition: findProposition(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode)
+    proposition: findProposition(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode),
+    language: state.language
 })
 
 export default connect(mapStateToProps)(PropositionPreview)
@@ -34,7 +35,7 @@ PropositionPreview.propTypes = {
         PropTypes.bool,
         PropTypes.shape({
             number: PropTypes.string,
-            text: PropTypes.string
+            english: PropTypes.string
         })
     ])
 }

@@ -4,11 +4,22 @@ import DisplayedProposition from '../DisplayedProposition'
 import { proposition } from '../../fixtures/testPropositions'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// mock store
+import configureStore from 'redux-mock-store'
+import { Provider } from 'react-redux'
+const mockStore = configureStore()
+const initialState = {
+    language: 'english'
+}
+const store = mockStore(initialState)
+
 it('renders a proposition correctly', () => {
     const { getByText } = render(
         <Router>
-            <DisplayedProposition 
-                proposition={proposition}/>
+            <Provider store={store}>
+                <DisplayedProposition 
+                    proposition={proposition}/>
+            </Provider>
         </Router>)
     expect(getByText(/Proposition/).textContent).toBe('Proposition 123')
 })

@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import propositionsReducer from '../reducers/propositionsReducer'
 import loaderReducer from '../reducers/loaderReducer'
 import errorReducer from '../reducers/errorReducer'
+import languageReducer from '../reducers/languageReducer'
 import { saveRootPropositionsReducer } from '../reducers/saveRootPropositionsReducer'
 
 // this is just because we want to use redux devtools with thunk:
@@ -14,6 +15,7 @@ export default () => {
             propositions: propositionsReducer,
             loader: loaderReducer,
             errors: errorReducer,
+            language: languageReducer,
             savedRootPropositions: saveRootPropositionsReducer
         }),
         // without redux devtools, applying middleware is simple:

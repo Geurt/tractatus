@@ -8,7 +8,7 @@ import { setLoading } from '../actions/loader'
 import PropositionTree from './PropositionTree'
 import PropositionPreview from './PropositionPreview'
 import PropositionDisplay from './PropositionDisplay'
-import { Navigation } from './Navigation'
+import Navigation from './Navigation'
 import Loader from './Loader'
 
 import '../styles/main.css'

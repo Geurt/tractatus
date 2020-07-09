@@ -3,21 +3,21 @@
 
 export const proposition = {
     number: "123",
-    text: "Proposition 123"
+    english: "Proposition 123"
 }
 
 export const propositionAncestry = [
     {
         number: "1",
-        text: "Proposition 1"  
+        english: "Proposition 1"  
     },
     {
         number: "12",
-        text: "Proposition 12"      
+        english: "Proposition 12"      
     },
     {
         number: "123",
-        text: "Proposition 123" 
+        english: "Proposition 123" 
     }
 ]
 
@@ -25,7 +25,7 @@ export const rootPropositionNode = {
     number: "1",
     proposition: {
         number: "1",
-        text: "Proposition 1"
+        english: "Proposition 1"
     },
     children: [
         ,   // possibly empty element
@@ -33,7 +33,7 @@ export const rootPropositionNode = {
             number: "11",
             proposition: {
                 number: "11",
-                text: "Proposition 11"
+                english: "Proposition 11"
             },
             children: [
                 ,
@@ -41,7 +41,7 @@ export const rootPropositionNode = {
                     number: "111",
                     proposition: {
                         number: "111",
-                        text: "Proposition 111"
+                        english: "Proposition 111"
                     },
                     children: []
                 }

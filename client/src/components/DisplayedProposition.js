@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { addDot } from '../utilities/propositions'
@@ -21,18 +22,22 @@ const DisplayedProposition = React.forwardRef((props, ref) => {
                     </Link>
                 </h2>
                 <p className="displayed-proposition__text proposition__text">
-                    {parse(proposition.text)}
+                    {parse(proposition[props.language])}
                 </p>
             </div>
         )
     }
 })
 
-export default DisplayedProposition
+const mapStateToProps = (state) => ({
+    language: state.language
+})
+
+export default connect(mapStateToProps, null, null, { forwardRef: true })(DisplayedProposition)
 
 DisplayedProposition.propTypes = {
     proposition: PropTypes.shape({
         number: PropTypes.string,
-        text: PropTypes.string
+        english: PropTypes.string
     })
 }

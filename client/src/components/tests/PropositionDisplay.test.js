@@ -5,6 +5,15 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { PropositionDisplay } from '../PropositionDisplay'
 import { propositionAncestry } from '../../fixtures/testPropositions'
 
+// mock store
+import configureStore from 'redux-mock-store'
+import { Provider } from 'react-redux'
+const mockStore = configureStore()
+const initialState = {
+    language: 'english'
+}
+const store = mockStore(initialState)
+
 beforeEach(() => {
     jest.mock('../../router/AppRouter')
 })
@@ -12,7 +21,9 @@ beforeEach(() => {
 it('should render the proposition ancestry', () => {
     const { getAllByText, getByText } = render(
         <Router>
-            <PropositionDisplay propositionAncestry={ propositionAncestry } />
+            <Provider store={store}>
+                <PropositionDisplay propositionAncestry={ propositionAncestry } />
+            </Provider>
         </Router>
         )
     expect(getAllByText(/Proposition/)).toHaveLength(3)
@@ -26,7 +37,9 @@ it('should exit on clicking background', () => {
 
     const { getByTestId } = render(
         <Router>
-            <PropositionDisplay propositionAncestry={ propositionAncestry } history={ mockHistory } />
+            <Provider store={store}>
+                <PropositionDisplay propositionAncestry={ propositionAncestry } history={ mockHistory } />
+            </Provider>    
         </Router>
         )
 
