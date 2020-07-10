@@ -1,8 +1,7 @@
 const fs = require('fs').promises
 const path = require('path');
 
-const { propositionDelimiter } = require('./regexps')
-const { numberRegex } = require('./regexps');
+const { propositionDelimiter, numberRegex, footnoteRegex } = require('./regexps')
 
 const tlpGermanPath = path.join(__dirname, '../data/tlp-german.tex')
 const tlpEnglishPath = path.join(__dirname, '../data/tlp-english.tex')
@@ -17,10 +16,17 @@ class Proposition {
         //      But the data structure here allows an easy workaround:}
         const rawNumber = rawProposition.match(numberRegex)[0]
         const rawText = rawProposition.replace(numberRegex, '')
-        
+        const footnote = extractFootnote(rawProposition)
+
         this.number = rawNumber
         this[language] = rawText
+        this[`${language}Footnote`] = footnote
     }
+}
+
+function extractFootnote(rawProposition) {
+    const footnoteMatch = rawProposition.match(footnoteRegex)
+    return footnoteMatch ? footnoteMatch[1] : undefined
 }
 
 async function getRawPropositions(texFilePath) {

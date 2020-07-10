@@ -56,8 +56,6 @@ const replaceTexWithSpans = (text) => {
     texCommands.forEach((command) => {
         // note: here each / is escaped twice! Once for string, then for the regex... (So it just matches one \)
         const re = new RegExp('\\\\(?<command>' + command + '){(?<content>.+?)}', 'g')
-        // const matches = [...proposition.text.matchAll(re)]
-
         text = text.replace(re, '<span class="texCommand_$<command>">$<content></span>')
     })
 
@@ -123,6 +121,11 @@ const parseSpecialCharacters = (text) => {
     return text
 }
 
+const removeFootnotes = (text) => {
+    text = text.replace(/\\footnote{.*}}/s,'}')
+    return text
+}
+
 const removeTexCharacters = (text) => {
     const texCharacters = [
         /\\AllowBreak/g,
@@ -171,7 +174,7 @@ const parseLaTex = (text) => {
 async function parsePropositions(propositions) {
     // (It is kind of ugly to do it this way; but mathJax gets confused
     // when parsing both languages in one call per proposition (timeouts juggling too many
-    // promises, it seems). It does work one after another.)
+    // promises, it seems). It does work one language after another.)
 
     // (so we first do the number for all propositions)
     let parsedPropositions = propositions.map(proposition => parsePropositionNumber(proposition))
@@ -179,8 +182,10 @@ async function parsePropositions(propositions) {
     // we wait until all promises (returned from parsePropositionEnglish,
     // waiting on laTex parsing) are resolved:
     parsedPropositions = Promise.all(propositions.map(proposition => parsePropositionEnglish(proposition)))
-    // (and finally the german for all propositions)
+    // (then the german for all propositions)
     parsedPropositions = Promise.all(propositions.map(proposition => parsePropositionGerman(proposition)))
+    // (and finally the same for all footnotes)
+    parsedPropositions = Promise.all(propositions.map(proposition => parsePropositionFootnotes(proposition)))
     return parsedPropositions
 }
 
@@ -199,6 +204,16 @@ async function parsePropositionEnglish(proposition) {
     return proposition
 }
 
+async function parsePropositionFootnotes(proposition) {
+    if (proposition.englishFootnote) {
+        proposition.englishFootnote = await parseText(proposition.englishFootnote)
+    }
+    if (proposition.germanFootnote) {
+        proposition.germanFootnote = await parseText(proposition.germanFootnote)
+    }
+    return proposition
+}
+
 function parseNumber(number) {
     number = trimNumber(number)
     number = removeDot(number)
@@ -208,6 +223,7 @@ function parseNumber(number) {
 
 async function parseText(text) {
     // Parse the text
+    text = removeFootnotes(text)
     text = removeComments(text)       // this depends on linebreaks; apply before removing those
     text = trimText(text)             // this is sometimes messed up by comments; remove them first
     text = removeLineBreaks(text)

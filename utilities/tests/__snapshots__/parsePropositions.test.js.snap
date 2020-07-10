@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expect all propositions to match their snapshots: Proposition 1 english 1`] = `"The world is everything that is the case.\\\\footnote{The decimal figures as numbers of the separate propositions indicate the logical importance of the propositions, the emphasis laid upon them in my exposition. The propositions <span class=\\"texCommand_textit\\">n</span>.1, <span class=\\"texCommand_textit\\">n</span>.2, <span class=\\"texCommand_textit\\">n</span>.3, etc., are comments on proposition No.<span class=\\"texCommand_textit\\">n</span>; the propositions <span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>1, <span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>2, etc., are comments on the proposition No.<span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>; and so on.}"`;
+exports[`Expect all propositions to match their snapshots: Proposition 1 english 1`] = `"The world is everything that is the case."`;
 
-exports[`Expect all propositions to match their snapshots: Proposition 1 german 1`] = `"Die Welt ist alles, was der Fall ist.\\\\footnote{Die Decimalzahlen als Nummern der einzelnen Sätze deuten das logische Gewicht der Sätze an, den Nachdruck, der auf ihnen in meiner Darstellung liegt. Die Sätze <span class=\\"texCommand_textit\\">n</span>.1, <span class=\\"texCommand_textit\\">n</span>.2, <span class=\\"texCommand_textit\\">n</span>.3, etc., sind Bemerkungen zum Satze No.<span class=\\"texCommand_textit\\">n</span>; die Sätze <span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>1, <span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>2, etc. Bemerkungen zum Satze No.<span class=\\"texCommand_textit\\">n</span>.<span class=\\"texCommand_textit\\">m</span>; und so weiter.}"`;
+exports[`Expect all propositions to match their snapshots: Proposition 1 german 1`] = `"Die Welt ist alles, was der Fall ist."`;
 
 exports[`Expect all propositions to match their snapshots: Proposition 2 english 1`] = `"What is the case, the fact, is the existence of atomic facts."`;
 
@@ -3566,7 +3566,7 @@ exports[`Expect all propositions to match their snapshots: Proposition 631 engli
 
 exports[`Expect all propositions to match their snapshots: Proposition 631 german 1`] = `"Das sogenannte Gesetz der Induktion kann jedenfalls kein logisches Gesetz sein, denn es ist offenbar ein sinnvoller Satz.—Und darum kann es auch kein Gesetz a priori sein."`;
 
-exports[`Expect all propositions to match their snapshots: Proposition 632 english 1`] = `"The law of causality is not a law but the form of a law.\\\\footnote{I.e. not the form of one particular law, but of any law of a certain sort (B.\\\\;R.).}"`;
+exports[`Expect all propositions to match their snapshots: Proposition 632 english 1`] = `"The law of causality is not a law but the form of a law."`;
 
 exports[`Expect all propositions to match their snapshots: Proposition 632 german 1`] = `"Das Kausalitätsgesetz ist kein Gesetz, sondern die Form eines Gesetzes."`;
 

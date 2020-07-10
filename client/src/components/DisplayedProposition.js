@@ -23,7 +23,11 @@ const DisplayedProposition = React.forwardRef((props, ref) => {
                 </h2>
                 <p className="displayed-proposition__text proposition__text">
                     {parse(proposition[props.language])}
+                    {proposition[`${props.language}Footnote`] && <sup>*</sup>}
                 </p>
+                {proposition[`${props.language}Footnote`] &&
+                    <p className="footnote">{parse(proposition[`${props.language}Footnote`])}</p>
+                }
             </div>
         )
     }
