@@ -11,18 +11,18 @@ app.listen(port, () => {
 })
 
 const { readTLP, findProposition } = require('./utilities/readTLP')
-const { createTLP } = require('./utilities/createTLP')
-const TLPpath = './data/output.json'
+// const { createTLP } = require('./utilities/createTLP')
+const TLPpath = './data/TLP.json'
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/:number', async (req, res) => {
     // Production: read the TLP
-    // const TLP = await readTLP(TLPpath)
+    const TLP = await readTLP(TLPpath)
     
     // Development: create a TLP on the fly
-    const TLP = await createTLP()
+    // const TLP = await createTLP()
 
     let number = req.params.number.replace('.','')    // allow dots
     number = parseInt(number)

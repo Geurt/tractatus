@@ -1,27 +1,7 @@
-const fs = require('fs');
-
 const { createPropositions } = require('./createPropositions')
 const { parsePropositions } = require('./parsePropositions') 
 const { structurePropositions } = require('./structureTLP')
 const { addStyleParams } = require('./styleTLP')
-
-// utility function to write a static JSON TLP
-const writeTLP = () => {
-    getPropositions(tlpPath).then((propositions) => {
-        addPrevAndNext(propositions) // do this before structuring
-        const TLP = structurePropositions(propositions)
-        addStyleParams(TLP)
-        const tlpJSON = JSON.stringify(TLP)
-    
-        fs.writeFile('../data/output.json', tlpJSON, (err) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log("TLP json written");
-            }
-        });
-    })
-}
 
 // create a TLP on the fly for development purposes
 const createTLP = async () => {
@@ -50,6 +30,5 @@ const addPrevAndNext = (propositions) => {
 }
 
 module.exports = {
-    createTLP,
-    writeTLP
+    createTLP
 }
