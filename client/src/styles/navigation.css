@@ -1,15 +1,47 @@
-.Navigation {
+.Menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
     position: fixed;
-    bottom: 5rem;
-    right: 7rem;
+    bottom: 0rem;
+    right: 0rem;
     font-size: 1.3rem;
+    margin: 0 5rem 2rem 0;
 }
 
-.Navigation__link {
+.Menu__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Menu__navigation-link {
     color: var(--light-color);
     text-decoration: none;
 }
 
-.Navigation__link:hover {
+.Menu__navigation-link:hover {
+    color: var(--highlight-color);
+}
+
+.Menu__icon path {
+    fill: var(--mid-color);
+}
+.Menu__icon:hover path {
+    fill: var(--highlight-color);
+}
+
+.Menu__button {
+    cursor: pointer;
+    color: var(--light-color);
+    background: none;
+    border: none;
+}
+.Menu__button:hover {
+    color: var(--main-color);
+}
+.Menu__button:active {
     color: var(--highlight-color);
 }

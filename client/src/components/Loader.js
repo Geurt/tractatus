@@ -1,7 +1,8 @@
 import React from 'react'
+import '../styles/Loader.css'
 
 export default () => (
-    <div>
-    &middot; &middot; &middot; loading &middot; &middot; &middot;
+    <div className="Loader">
+        &middot; &middot; &middot; loading &middot; &middot; &middot;
     </div>
 )

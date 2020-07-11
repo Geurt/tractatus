@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../styles/Navigation.css'
+import { ReactComponent as ChevronUp } from '../images/lnr-chevron-up.svg'
+import { ReactComponent as ChevronDown } from '../images/lnr-chevron-down.svg'
+import { ReactComponent as ExpandIcon } from '../images/lnr-frame-expand.svg'
+import { ReactComponent as ContractIcon } from '../images/lnr-frame-contract.svg'
 
 import { setGerman, setEnglish } from '../actions/languages'
 
@@ -13,18 +17,45 @@ class Navigation extends React.Component {
             this.props.dispatch(setEnglish()) 
         }
     }
+    toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen()
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen()
+          }
+        }
+    }
     render() {
         const number = parseInt(this.props.rootNumber)
         return (
-            <nav className="Navigation">
-                { number > 1 && <Link className="Navigation__link Navigation__link--previous" to={`/${number - 1}`}>{`<${number - 1} `}</Link> }
-                { number < 7 && <Link className="Navigation__link Navigation__link--next" to={`/${number + 1}`}>{` ${number + 1}>`}</Link> }
-                <p
-                    className="toggle_language"
-                    data-testid="toggle_language"
-                    onClick={this.changeLanguage}
-                >E|D</p>
-            </nav>
+            <div className="Menu">
+                <div className="Menu__group">
+                    <button className="Menu__button" onClick={this.toggleFullScreen}>
+                        <ExpandIcon className="Menu__icon"/>
+                    </button>
+                    <Link className="Menu__button" to='/introduction'>?</Link>
+                </div>
+                <nav className="Menu__group Menu__navigation">
+                    { number > 1 && 
+                        <Link className="Menu__navigation-link Menu__navigation-link--previous" to={`/${number - 1}`}>
+                            <ChevronUp className="Menu__icon"/>
+                        </Link> }
+                    { [1,2,3,4,5,6,7].map((i) => 
+                        <Link className="Menu__navigation-link" key={i} to={`/${i}`}>{i}</Link>) }
+                    { number < 7 && 
+                        <Link className="Menu__navigation-link Menu__navigation-link--next" to={`/${number + 1}`}>
+                            <ChevronDown className="Menu__icon"/>
+                        </Link> }
+                </nav>
+                <div className="Menu__group">
+                    <button
+                        className="Menu__button toggle_language"
+                        data-testid="toggle_language"
+                        onClick={this.changeLanguage}
+                    >E|D</button>
+                </div>
+            </div>
         )
     }
 }
