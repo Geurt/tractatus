@@ -54,8 +54,8 @@ class PropositionTreeContainer extends React.Component {
                 also changes. So instead we hide non-selected nodes altogether;
                 and we see the background.
                 */}
-                <PropositionTree foreground={false} rootPropositionNode={this.props.rootPropositionNode} />
                 <PropositionTree foreground={true} rootPropositionNode={this.props.rootPropositionNode} />
+                <PropositionTree foreground={false} rootPropositionNode={this.props.rootPropositionNode} />
                 <Navigation rootNumber={this.props.match.params.number.charAt(0)} />
             </div>
         )

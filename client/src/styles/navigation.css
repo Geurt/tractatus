@@ -1,3 +1,12 @@
+.example-appear {
+    opacity: 0;
+}
+.example-appear-active {
+    opacity: 1;
+    transition: opacity 10s;
+}
+
+
 .Menu {
     display: flex;
     flex-direction: column;

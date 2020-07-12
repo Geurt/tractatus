@@ -2,6 +2,10 @@ export const isInSelectedAncestry = (number, selectedNumber = '') => {
     return selectedNumber.toString().startsWith(number.toString())
 }
 
+export const isSelected = (number, selectedNumber = '') => {
+    return number === selectedNumber
+}
+
 // because of the way we've structured the data, we can find proposition nodes very efficiently:
 export const findNode = (number, rootNode) => {
     try {

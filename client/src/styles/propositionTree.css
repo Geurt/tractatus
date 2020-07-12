@@ -6,6 +6,10 @@
     left: 50%;
 }
 
+.rootNodeContainer.foreground {
+    z-index: 10;
+}
+
 .PropositionNode {
     color: var(--main-color);
     position: relative;
@@ -14,6 +18,7 @@
     transform: rotate(var(--rotation-angle));
     cursor: pointer;
 }
+
 .PropositionNode::before {
     /* the graph's edges are :before pseudoelements */
     content: "";
@@ -47,7 +52,7 @@
 }
 
 .rootNodeContainer > .PropositionNode {
-    padding: 0;
+    padding: 0 !important;
     border: none;
 }
 
@@ -80,3 +85,39 @@
     top: 0;
     left: 0;
 }
+
+/* the below fades all nodes but the children of the selected proposition a bit*/
+.background {
+    transition: opacity 300ms;
+}
+.foreground:hover + .background {
+    opacity: .3;
+}
+.PropositionNode.selected .PropositionNode {
+    visibility: visible;
+}
+
+
+/* growth animation */
+.PropositionNode.grow-appear {
+    padding-left: 0rem;
+}
+/* we delay the animation based on depth level */
+.PropositionNode.grow-appear-active {
+    padding-left: 5rem;
+    transition: padding 1s calc( var(--grow-speed) * calc(var(--level) - 2ms));
+    transition-timing-function: ease-out;
+}
+.background .PropositionNode.grow-appear .Proposition {
+    visibility: hidden;
+    animation: reveal calc( var(--grow-speed) * calc(var(--level) - 2ms));
+    animation-fill-mode: forwards;
+}
+@keyframes reveal {
+    99% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+  }

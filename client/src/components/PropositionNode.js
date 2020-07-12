@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import classNames from 'classnames';
+import { CSSTransition } from 'react-transition-group'
 
 import Proposition from './Proposition'
 import { selectProposition } from '../actions/propositions'
-import { isInSelectedAncestry } from '../selectors/propositions'
+import { isInSelectedAncestry, isSelected } from '../selectors/propositions'
 import { history } from '../router/AppRouter'
 
 // A difficulty here: we cannot use the CONNECTED component recursively in the same file
@@ -16,7 +18,7 @@ export class PropositionNode extends React.Component {
         e.stopPropagation()
         this.props.dispatch(selectProposition(this.props.node.number))
     }
-    onDisplayProosition = (e) => {
+    onDisplayProposition = (e) => {
         e.stopPropagation()
         this.props.dispatch(selectProposition(this.props.node.number))
         history.push(`/${this.props.node.number}/display`)
@@ -32,35 +34,50 @@ export class PropositionNode extends React.Component {
         const angle = this.props.node.angle
         const compensatingAngle = this.props.node.compensatingAngle
 
+        // classnames for highlighting effects
+        const className = classNames({
+            'PropositionNode': true,
+            'active': this.props.isInSelectedAncestry,
+            'selected': this.props.isSelected
+        })
+
         // Finally, each node will recursively render its children:
         return (
-            <div 
-                onMouseOver={this.onSelectProposition}
-                onClick={this.onDisplayProosition}
-                className= {this.props.isInSelectedAncestry ? "PropositionNode active" : "PropositionNode"}
-                style={{
-                        "--rotation-angle": angle + "deg", 
-                        "--compensating-angle": compensatingAngle + "deg"
-                    }}>
+            <CSSTransition
+                    in={true}
+                    timeout={10000}
+                    classNames="grow"
+                    appear>  
+                <div 
+                    onMouseOver={this.onSelectProposition}
+                    onClick={this.onDisplayProposition}
+                    className= {className}
+                    style={{
+                            "--rotation-angle": angle + "deg", 
+                            "--compensating-angle": compensatingAngle + "deg",
+                            "--level": this.props.node.number.length + "ms"
+                        }}>
 
-                {proposition && <Proposition proposition={proposition} />}
+                    {proposition && <Proposition proposition={proposition} />}
 
-                {children.length > 0 && 
-                    <ul className="PropositionNode__children">
-                        {children.map((child) =>
-                            <li key={child.number} className="PropositionNode__child">
-                                <ConnectedPropositionNode node={child}/>
-                            </li>
-                        )}
-                    </ul>}
-            </div>
+                    {children.length > 0 && 
+                        <ul className="PropositionNode__children">
+                            {children.map((child) =>
+                                <li key={child.number} className="PropositionNode__child">
+                                    <ConnectedPropositionNode node={child}/>
+                                </li>
+                            )}
+                        </ul>}
+                </div>
+            </CSSTransition>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({
     // check if the proposition is in the ancestry path of the selected proposition
-    isInSelectedAncestry: isInSelectedAncestry(ownProps.node.number, state.propositions.selectedPropositionNumber)
+    isInSelectedAncestry: isInSelectedAncestry(ownProps.node.number, state.propositions.selectedPropositionNumber),
+    isSelected: isSelected(ownProps.node.number, state.propositions.selectedPropositionNumber)
 })
 
 export default connect(mapStateToProps)(PropositionNode)

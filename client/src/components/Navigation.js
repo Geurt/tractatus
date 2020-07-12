@@ -5,7 +5,6 @@ import '../styles/Navigation.css'
 import { ReactComponent as ChevronUp } from '../images/lnr-chevron-up.svg'
 import { ReactComponent as ChevronDown } from '../images/lnr-chevron-down.svg'
 import { ReactComponent as ExpandIcon } from '../images/lnr-frame-expand.svg'
-import { ReactComponent as ContractIcon } from '../images/lnr-frame-contract.svg'
 
 import { setGerman, setEnglish } from '../actions/languages'
 
@@ -31,10 +30,7 @@ class Navigation extends React.Component {
         return (
             <div className="Menu">
                 <div className="Menu__group">
-                    <button className="Menu__button" onClick={this.toggleFullScreen}>
-                        <ExpandIcon className="Menu__icon"/>
-                    </button>
-                    <Link className="Menu__button" to='/introduction'>?</Link>
+                    <Link className="Menu__button" to='/'>?</Link>
                 </div>
                 <nav className="Menu__group Menu__navigation">
                     { number > 1 && 
@@ -54,6 +50,9 @@ class Navigation extends React.Component {
                         data-testid="toggle_language"
                         onClick={this.changeLanguage}
                     >E|D</button>
+                    <button className="Menu__button" onClick={this.toggleFullScreen}>
+                        <ExpandIcon className="Menu__icon"/>
+                    </button>
                 </div>
             </div>
         )
