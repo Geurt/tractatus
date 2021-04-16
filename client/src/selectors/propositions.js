@@ -83,6 +83,32 @@ export const findSiblings = (number, rootNode) => {
 
 }
 
+export const findEarlierSiblings = (number, rootNode) => {
+    let siblings = findSiblings(number, rootNode)
+    if (!siblings) return undefined
+    try {
+        // there may be null elements; in the position that can correspond to 0 digits
+        // if there are nodes here they have numbers; otherwise they are null and we filter them
+        siblings = siblings.filter((sibling) => !!sibling)
+        const earlierSiblings = siblings.filter((sibling) => sibling.number < number)
+        return earlierSiblings
+    } catch(e) {
+        throw new Error(e)
+    }
+}
+
+export const findEarlierSiblingsPropositions = (number, rootNode) => {
+    let earlierSiblings = findEarlierSiblings(number, rootNode)
+    if (!earlierSiblings) return undefined
+    try {
+        earlierSiblings = earlierSiblings.filter((node) => !!(node.proposition))
+        const earlierSiblingsPropositions = earlierSiblings.map((node) => node.proposition)
+        return earlierSiblingsPropositions
+    } catch(e) {
+        throw new Error(e)
+    }
+}
+
 export const findPreviousSiblingNumber = (number, rootNode) => {
     const siblings = findSiblings(number, rootNode) // may be undefined
     if (!siblings) return undefined

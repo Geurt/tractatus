@@ -11,8 +11,6 @@ import PropositionDisplay from './PropositionDisplay'
 import Navigation from './Navigation'
 import Loader from './Loader'
 
-import '../styles/main.css'
-
 class PropositionTreeContainer extends React.Component {
     componentDidMount() {
         const propositionNumber = this.props.match.params.number
@@ -37,7 +35,6 @@ class PropositionTreeContainer extends React.Component {
             this.props.dispatch(selectProposition(propositionNumber))
         }
     }
-
     render() {
         return (
             this.props.loading ? <Loader /> :

@@ -7,6 +7,23 @@
     overflow: scroll;
 }
 
+.displayed-propositions-expand-contract-button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    color: lightgray;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.displayed-propositions-expand-contract-button:hover {
+    color: gray;
+}
+.displayed-propositions-expand-contract-button:focus {
+    outline: 0;
+}
+
 .displayed-proposition {
     padding-bottom: 1rem;
     display: flex;
@@ -65,4 +82,18 @@
 .footnote::before {
     content: "*";
     margin-right: .3rem;
+}
+
+.displayed-proposition-earlier-siblings {
+    margin-top: 2rem;
+}
+
+.displayed-proposition-earlier-sibling {
+    color: grey;
+    margin-bottom: 2rem;
+}
+
+.displayed-proposition-earlier-sibling .displayed-proposition__number a {
+    color: grey;
+    font-weight: normal;
 }

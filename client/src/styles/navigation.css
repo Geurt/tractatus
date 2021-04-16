@@ -47,6 +47,7 @@
     color: var(--light-color);
     background: none;
     border: none;
+    margin: .2rem;
 }
 .Menu__button:hover {
     color: var(--main-color);

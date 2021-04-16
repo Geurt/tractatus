@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import Modal from './Modal'
 import DisplayedProposition from './DisplayedProposition'
 import { findAncestry, findPreviousSiblingNumber, findNextSiblingNumber } from '../selectors/propositions'
+import { setExpand, setContract } from '../actions/expand'
 
 import '../styles/PropositionDisplay.css'
 
@@ -14,7 +15,7 @@ export class PropositionDisplay extends React.Component {
         super(props)
         this.lastProposition = React.createRef()
     }
-    componentDidUpdate() {
+    componentDidMount() {
         if (this.lastProposition.current) {
             this.lastProposition.current.scrollIntoView({
                 behavior: "smooth",
@@ -26,10 +27,21 @@ export class PropositionDisplay extends React.Component {
         // to access history on props, we export below through withRouter()
         this.props.history.push(`/${this.props.selectedPropositionNumber}`)
     }
+    expandContract = () => {
+        if (this.props.expandContract === 'contracted') { 
+            this.props.dispatch(setExpand()) 
+        } else if (this.props.expandContract === 'expanded') {
+            this.props.dispatch(setContract()) 
+        }
+    }
     render() {
         const propositionAncestry = this.props.propositionAncestry
+
         return (
             <Modal onExit={this.onExit} >
+                <button onClick={this.expandContract} className="displayed-propositions-expand-contract-button">
+                    {this.props.expandContract === 'contracted' ? '+' : '-'}
+                </button>
                 <div className="displayed-propositions-container">
                     { propositionAncestry.map((proposition, i, arr) => (
                         <DisplayedProposition 
@@ -57,7 +69,8 @@ const mapStateToProps = (state) => ({
     previousSiblingNumber: findPreviousSiblingNumber(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode),
     nextSiblingNumber: findNextSiblingNumber(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode),
     selectedPropositionNumber: state.propositions.selectedPropositionNumber,
-    propositionAncestry: findAncestry(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode)
+    propositionAncestry: findAncestry(state.propositions.selectedPropositionNumber, state.propositions.rootPropositionNode),
+    expandContract: state.expandContract
 })
 
 export default connect(mapStateToProps)(withRouter(PropositionDisplay))
