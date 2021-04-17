@@ -1,7 +1,26 @@
+.Introduction-link {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+.Introduction-container .tlp-cover {
+    position: fixed;
+    right: 5rem;
+    top: 5rem;
+    width: 20vw;
+    z-index: -10;
+}
+
 .Introduction {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+    text-align: justify;
+    font-size: 1.4rem;
+    width: 40rem;
+}
+
+.Introduction p:first-child::first-letter {
+    font-size: 3rem;
 }

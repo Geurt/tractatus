@@ -11,17 +11,17 @@ import '../styles/propositionParsing.css'
 const DisplayedProposition = React.forwardRef((props, ref) => {
     const proposition = props.proposition
     const earlierSiblings = findEarlierSiblingsPropositions(proposition.number, props.rootNode)
+    console.log(earlierSiblings)
 
     if (proposition === undefined) {
         return null
     } else {
         return (
             <div className="displayed-proposition">
-                { (props.expandContract === 'expanded') && 
-                    earlierSiblings &&
+                { (props.expandContract === 'expanded') && (earlierSiblings?.length > 0) &&
                     <div className="displayed-proposition-earlier-siblings">
                         { earlierSiblings.map((proposition) => (
-                            <div className="displayed-proposition-earlier-sibling">
+                            <div key={proposition.number} className="displayed-proposition-earlier-sibling">
                                 <DisplayedPropositionContent proposition={proposition} language={props.language}/>
                             </div>)
                             )

@@ -31,6 +31,12 @@
     align-items: center;
 }
 
+.displayed-proposition-main, .displayed-proposition-earlier-siblings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .displayed-proposition::after {
     content: "";
     width: 0;
@@ -84,13 +90,9 @@
     margin-right: .3rem;
 }
 
-.displayed-proposition-earlier-siblings {
-    margin-top: 2rem;
-}
-
 .displayed-proposition-earlier-sibling {
     color: grey;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .displayed-proposition-earlier-sibling .displayed-proposition__number a {

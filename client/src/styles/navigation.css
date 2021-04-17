@@ -35,6 +35,10 @@
     color: var(--highlight-color);
 }
 
+.Menu__navigation-link.active {
+    color: var(--mid-color);
+}
+
 .Menu__icon path {
     fill: var(--mid-color);
 }
@@ -54,4 +58,9 @@
 }
 .Menu__button:active {
     color: var(--highlight-color);
+}
+
+.Menu__button--info {
+    font-family: 'Arial';
+    font-size: 1.3rem;
 }

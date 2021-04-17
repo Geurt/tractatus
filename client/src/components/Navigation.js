@@ -30,7 +30,7 @@ class Navigation extends React.Component {
         return (
             <div className="Menu">
                 <div className="Menu__group">
-                    <Link className="Menu__button" to='/'>?</Link>
+                    <Link className="Menu__button Menu__button--info" to='/introduction'>?</Link>
                 </div>
                 <nav className="Menu__group Menu__navigation">
                     { number > 1 && 
@@ -38,7 +38,12 @@ class Navigation extends React.Component {
                             <ChevronUp className="Menu__icon"/>
                         </Link> }
                     { [1,2,3,4,5,6,7].map((i) => 
-                        <Link className="Menu__navigation-link" key={i} to={`/${i}`}>{i}</Link>) }
+                        <Link 
+                            className={i === number ? "Menu__navigation-link active" : "Menu__navigation-link"}
+                            key={i} 
+                            to={`/${i}`}>
+                            {i}
+                        </Link>) }
                     { number < 7 && 
                         <Link className="Menu__navigation-link Menu__navigation-link--next" to={`/${number + 1}`}>
                             <ChevronDown className="Menu__icon"/>
