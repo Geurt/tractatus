@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import '../styles/Navigation.css'
+import '../styles/navigation.css'
 import { ReactComponent as ChevronUp } from '../images/lnr-chevron-up.svg'
 import { ReactComponent as ChevronDown } from '../images/lnr-chevron-down.svg'
 import { ReactComponent as ExpandIcon } from '../images/lnr-frame-expand.svg'

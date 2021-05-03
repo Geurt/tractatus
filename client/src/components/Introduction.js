@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/Introduction.css'
-import TLPpic from '../images/tlpmotto.png'
+import '../styles/introduction.css'
 
 const Introduction = () => (
     <div className="Introduction-container">
