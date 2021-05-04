@@ -12,6 +12,10 @@ import Navigation from './Navigation'
 import Loader from './Loader'
 
 class PropositionTreeContainer extends React.Component {
+    constructor(props) {
+        super(props)
+        this.centerView = React.createRef()
+    }
     componentDidMount() {
         const propositionNumber = this.props.match.params.number
         const rootNumber = propositionNumber.charAt(0)
@@ -34,26 +38,40 @@ class PropositionTreeContainer extends React.Component {
         if (propositionNumber.length > 1 || isOnDisplay) {
             this.props.dispatch(selectProposition(propositionNumber))
         }
+        
+        // we scroll the viewContainer into view (so on smaller devices we can scroll)
+        if (this.centerView.current) {
+            this.centerView.current.scrollIntoView({
+                behavior: "auto",
+                block: "start",
+                inline: "start"
+            })
+        }
     }
     render() {
         return (
-            this.props.loading ? <Loader /> :
-            <div>                
-                <PropositionPreview />
-                <Route path='/:number/display'>
-                    <PropositionDisplay />
-                </Route>
-                {/*
-                We render the tree once as background and once as foreground;
-                this is a bit of a visual hack to avoid a flickering effect
-                due to the z-index of the selected ancestry changing.
-                Due to stacking context it is unavoidable that non-selected sibling's z-index
-                also changes. So instead we hide non-selected nodes altogether;
-                and we see the background.
-                */}
-                <PropositionTree foreground={true} rootPropositionNode={this.props.rootPropositionNode} />
-                <PropositionTree foreground={false} rootPropositionNode={this.props.rootPropositionNode} />
-                <Navigation rootNumber={this.props.match.params.number.charAt(0)} />
+            <div className="viewCanvas">
+                {!this.props.loading && <>
+                    <Navigation rootNumber={this.props.match.params.number.charAt(0)} />
+                    <PropositionPreview />
+                    <Route path='/:number/display'>
+                        <PropositionDisplay />
+                    </Route>
+                </>}
+                <div className="viewContainer" ref={this.centerView}>                
+                    {this.props.loading ? <Loader /> : <>
+                        {/*
+                        We render the tree once as background and once as foreground;
+                        this is a bit of a visual hack to avoid a flickering effect
+                        due to the z-index of the selected ancestry changing.
+                        Due to stacking context it is unavoidable that non-selected sibling's z-index
+                        also changes. So instead we hide non-selected nodes altogether;
+                        and we see the background.
+                        */}
+                        <PropositionTree foreground={true} rootPropositionNode={this.props.rootPropositionNode} />
+                        <PropositionTree foreground={false} rootPropositionNode={this.props.rootPropositionNode} />
+                        </>}
+                </div>
             </div>
         )
     }

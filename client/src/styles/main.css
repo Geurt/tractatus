@@ -4,6 +4,12 @@ body {
     justify-content: center;
     min-width: 100vw;
     box-sizing: border-box;
+    margin: 0;
+}
+
+#root {
+    position: relative;
+    width: 100%;
 }
 
 a {

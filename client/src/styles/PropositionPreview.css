@@ -1,10 +1,11 @@
 .PropositionPreview {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 30%;
     padding: 3rem;
     opacity: .25;
+    z-index: 10;
 }
 
 .PropositionPreview img {

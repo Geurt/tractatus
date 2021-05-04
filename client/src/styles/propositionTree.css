@@ -1,9 +1,40 @@
 .rootNodeContainer {
     width: 0;
     height: 0;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
+}
+
+/* the viewContainer is used as a "viewport", scrolled to center in the larger viewCanvas */
+/* on screen devices we keep the canvas same as screen, so now scrolling. On smaller devices we make it larger. */
+.viewCanvas {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+@media (max-width: 900px) {
+    .viewCanvas {
+        position: relative;
+        width: 150vw;
+        height: 120vh;
+    }
+}
+@media (max-width: 600px) {
+    .viewCanvas {
+        position: relative;
+        width: 200vw;
+        height: 150vh;
+    }
+}
+.viewContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
 }
 
 .rootNodeContainer.foreground {

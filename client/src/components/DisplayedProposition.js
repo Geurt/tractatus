@@ -11,7 +11,6 @@ import '../styles/propositionParsing.css'
 const DisplayedProposition = React.forwardRef((props, ref) => {
     const proposition = props.proposition
     const earlierSiblings = findEarlierSiblingsPropositions(proposition.number, props.rootNode)
-    console.log(earlierSiblings)
 
     if (proposition === undefined) {
         return null
