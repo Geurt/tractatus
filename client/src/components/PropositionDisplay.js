@@ -40,7 +40,7 @@ export class PropositionDisplay extends React.Component {
         return (
             <Modal onExit={this.onExit} >
                 <button onClick={this.expandContract} className="displayed-propositions-expand-contract-button">
-                    {this.props.expandContract === 'contracted' ? '+' : '-'}
+                    {this.props.expandContract === 'contracted' ? '+' : '\u2013'}
                 </button>
                 <div className="displayed-propositions-container">
                     { propositionAncestry.map((proposition, i, arr) => (

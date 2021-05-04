@@ -7,6 +7,9 @@ const Modal = (props) => (
         <div className="Modal--background" data-testid="modal-background"
                 onClick={props.onExit}></div>
         <div className="Modal--children">
+            <button onClick={props.onExit} className="Modal--close-button">
+            +
+            </button>
             { props.children }
         </div>
     </div>

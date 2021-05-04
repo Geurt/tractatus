@@ -4,4 +4,15 @@
     --main-color: #000;
     --highlight-color: red;
     --grow-speed: 500;
+    --edge-length: 5rem;
+}
+@media (min-width: 1400px) {
+    :root {
+        --edge-length: 6rem;
+    }
+}
+@media (min-width: 2000px) {
+    :root {
+        --edge-length: 8rem;
+    }
 }

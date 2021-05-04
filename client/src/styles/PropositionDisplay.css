@@ -1,16 +1,28 @@
 .displayed-propositions-container {
     box-sizing: border-box;
     background: #fff;
-    padding: 5rem 5rem 20rem 5rem;
+    padding: 5rem 8rem 20rem 8rem;
     height: 100vh;
-    max-width: 50rem;
+    max-width: 40rem;
     overflow: scroll;
+    touch-action: pan-y;
+}
+@media (max-width: 900px) {
+    .displayed-propositions-container {
+        max-width: 36rem;
+        padding: 5rem 6rem 20rem 6rem;
+    }
+}
+@media (max-width: 600px) {
+    .displayed-propositions-container {
+        padding: 5rem 3rem 20rem 3rem;
+    }
 }
 
 .displayed-propositions-expand-contract-button {
     position: absolute;
     right: 1rem;
-    top: 1rem;
+    top: 3rem;
     background: none;
     border: none;
     color: lightgray;
@@ -22,6 +34,12 @@
 }
 .displayed-propositions-expand-contract-button:focus {
     outline: 0;
+}
+@media (max-width: 600px) {
+    .displayed-propositions-expand-contract-button {
+        right: .3rem;
+        top: 3rem;
+    } 
 }
 
 .displayed-proposition {

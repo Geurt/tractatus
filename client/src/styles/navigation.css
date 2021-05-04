@@ -10,13 +10,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     height: 100vh;
     position: fixed;
-    bottom: 0rem;
+    top: 2rem;
     right: 0rem;
     font-size: 1.3rem;
-    margin: 0 5rem 2rem 0;
+    margin: 0rem 2rem 0 0;
     z-index: 10;
 }
 
@@ -29,6 +29,8 @@
 .Menu__navigation-link {
     color: var(--light-color);
     text-decoration: none;
+
+    margin: .2rem;
 }
 
 .Menu__navigation-link:hover {
@@ -37,6 +39,10 @@
 
 .Menu__navigation-link.active {
     color: var(--mid-color);
+}
+
+.Menu__navigation-link.disabled .Menu__icon path{
+    fill: var(--light-color);
 }
 
 .Menu__icon path {
@@ -59,8 +65,28 @@
 .Menu__button:active {
     color: var(--highlight-color);
 }
+.Menu__button:focus {
+    outline: 0;
+}
 
 .Menu__button--info {
     font-family: 'Arial';
     font-size: 1.3rem;
+}
+
+@media (max-width: 600px) {
+    .Menu {
+        top: 1rem;
+        right: .2rem;
+        margin: 0;
+    }
+    .Menu__button--fullscreen {
+        display: none;
+    }
+    .Menu__navigation-link--number {
+        display: none;
+    }
+    .Menu__navigation-link--number.active{
+        display: block;
+    }
 }

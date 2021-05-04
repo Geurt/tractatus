@@ -2,10 +2,17 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 30%;
-    padding: 3rem;
+    width: 20rem;
+    padding: 1.5rem 3rem;
     opacity: .25;
-    z-index: 10;
+    z-index: 0;
+}
+
+@media (max-width: 400px) {
+    .PropositionPreview {
+        padding: 1rem 2rem;
+        width: 15rem;
+    }
 }
 
 .PropositionPreview img {

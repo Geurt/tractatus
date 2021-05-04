@@ -1,14 +1,13 @@
 .Introduction-link {
     display: block;
     width: 100vw;
-    height: 100vh;
 }
 
 .Introduction-container .tlp-cover {
     position: fixed;
     right: 5rem;
     top: 5rem;
-    width: 20vw;
+    max-width: 20vw;
     z-index: -10;
 }
 
@@ -18,7 +17,13 @@
     padding: 6rem 4rem;
     text-align: justify;
     font-size: 1.4rem;
-    width: 40rem;
+    max-width: 40rem;
+}
+
+@media (max-width: 600px) {
+    .Introduction {
+        padding: 2rem;
+    }
 }
 
 .Introduction p:first-child::first-letter {

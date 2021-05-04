@@ -17,7 +17,7 @@ class Navigation extends React.Component {
         }
     }
     toggleFullScreen = () => {
-        if (!document.fullscreenElement) {
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
             document.documentElement.requestFullscreen()
         } else {
           if (document.exitFullscreen) {
@@ -33,21 +33,19 @@ class Navigation extends React.Component {
                     <Link className="Menu__button Menu__button--info" to='/introduction'>?</Link>
                 </div>
                 <nav className="Menu__group Menu__navigation">
-                    { number > 1 && 
-                        <Link className="Menu__navigation-link Menu__navigation-link--previous" to={`/${number - 1}`}>
-                            <ChevronUp className="Menu__icon"/>
-                        </Link> }
+                    <Link className={number === 1 ? "Menu__navigation-link Menu__navigation-link--previous disabled" : "Menu__navigation-link Menu__navigation-link--previous"} to={`/${number - 1}`}>
+                        <ChevronUp className="Menu__icon"/>
+                    </Link> 
                     { [1,2,3,4,5,6,7].map((i) => 
                         <Link 
-                            className={i === number ? "Menu__navigation-link active" : "Menu__navigation-link"}
+                            className={i === number ? "Menu__navigation-link Menu__navigation-link--number active" : "Menu__navigation-link Menu__navigation-link--number"}
                             key={i} 
                             to={`/${i}`}>
                             {i}
                         </Link>) }
-                    { number < 7 && 
-                        <Link className="Menu__navigation-link Menu__navigation-link--next" to={`/${number + 1}`}>
-                            <ChevronDown className="Menu__icon"/>
-                        </Link> }
+                    <Link className={number === 7 ? "Menu__navigation-link Menu__navigation-link--next disabled" : "Menu__navigation-link Menu__navigation-link--next"} to={`/${number + 1}`}>
+                        <ChevronDown className="Menu__icon"/>
+                    </Link>
                 </nav>
                 <div className="Menu__group">
                     <button
@@ -55,7 +53,7 @@ class Navigation extends React.Component {
                         data-testid="toggle_language"
                         onClick={this.changeLanguage}
                     >E|D</button>
-                    <button className="Menu__button" onClick={this.toggleFullScreen}>
+                    <button className="Menu__button Menu__button--fullscreen" onClick={this.toggleFullScreen}>
                         <ExpandIcon className="Menu__icon"/>
                     </button>
                 </div>

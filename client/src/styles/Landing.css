@@ -10,3 +10,16 @@
 .tlp-cover {
     width: 30rem;
 }
+
+@media (max-width: 900px) {
+    .tlp-cover {
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tlp-cover {
+        width: 20rem;
+        margin-left: 1rem;
+    }
+}
