@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import DisplayedProposition from '../DisplayedProposition'
-import { proposition } from '../../fixtures/testPropositions'
+import { proposition, rootPropositionNode } from '../../fixtures/testPropositions'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 // mock store
@@ -9,7 +9,10 @@ import configureStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 const mockStore = configureStore()
 const initialState = {
-    language: 'english'
+    language: 'english',
+    propositions: {
+        rootPropositionNode
+    }
 }
 const store = mockStore(initialState)
 

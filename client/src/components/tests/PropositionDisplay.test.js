@@ -3,14 +3,17 @@ import { render, fireEvent } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { PropositionDisplay } from '../PropositionDisplay'
-import { propositionAncestry } from '../../fixtures/testPropositions'
+import { propositionAncestry, rootPropositionNode } from '../../fixtures/testPropositions'
 
 // mock store
 import configureStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 const mockStore = configureStore()
 const initialState = {
-    language: 'english'
+    language: 'english',
+    propositions: {
+        rootPropositionNode
+    }
 }
 const store = mockStore(initialState)
 

@@ -40,8 +40,8 @@ test('Should render the right links', () => {
             , container)
     })
 
-    expect(container.querySelector('.Navigation__link--previous').textContent).toContain("2")
-    expect(container.querySelector('.Navigation__link--next').textContent).toContain("4")
+    expect(container.querySelector('.Menu__navigation-link--previous').textContent).toBeTruthy()
+    expect(container.querySelector('.Menu__navigation-link--next').textContent).toBeTruthy()
 })
 
 test('Should toggle language on click', () => {

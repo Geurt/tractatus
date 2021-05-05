@@ -15,7 +15,7 @@ export class PropositionDisplay extends React.Component {
         super(props)
         this.lastProposition = React.createRef()
     }
-    componentDidMount() {
+    componentDidUpdate() {
         if (this.lastProposition.current) {
             this.lastProposition.current.scrollIntoView({
                 behavior: "smooth",
