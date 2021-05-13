@@ -80,13 +80,15 @@
         right: .2rem;
         margin: 0;
     }
-    .Menu__button--fullscreen {
-        display: none;
-    }
     .Menu__navigation-link--number {
         display: none;
     }
     .Menu__navigation-link--number.active{
         display: block;
+    }
+}
+@media (hover: none) {
+    .Menu__button--fullscreen {
+        display: none;
     }
 }
